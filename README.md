@@ -24,4 +24,7 @@ Fitness plan selection based on user profile
 Determining feedback based on progress
 
 <h2>Mockups</h2>
+<img src="MarkupImages/Index.png" alt="index.html markup"/>
+<img src="" alt=""/>
+<img src="" alt=""/>
 <img src="" alt=""/>
