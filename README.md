@@ -23,8 +23,8 @@ Connections with other users
 Fitness plan selection based on user profile
 Determining feedback based on progress
 
-<h2>Mockups</h2>
+<h2>Markups</h2>
 <img src="MarkupImages/Index.png" alt="index.html markup"/>
-<img src="" alt=""/>
-<img src="" alt=""/>
-<img src="" alt=""/>
+<img src="MarkupImages/SignUp.png" alt="singup.html markup"/>
+<img src="MarkupImages/Profile.png" alt="profile.html markup"/>
+<img src="MarkupImages/Home.png" alt="home.html markup"/>
