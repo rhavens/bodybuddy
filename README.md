@@ -7,20 +7,20 @@ Most people lose track of their goals for workouts. If they miss a day, they are
 Fit Track provides a fitness plan and serves a reminder to keep you on track. It is personalized, keeping track of your progress and serving personalized suggestions.
 
 <h2>Features</h2>
-Server-side data persistence
-Client-side data persistence
-Front-end framework (TBD)
-Reporting with charts and graphs
+Server-side data persistence<br/>
+Client-side data persistence<br/>
+Front-end framework (TBD)<br/>
+Reporting with charts and graphs<br/>
 Sending emails and/or SMS
 
 <h2>Data Collection</h2>
-User login credentials
-Basic fitness profile (height/weight etc.)
-Past workouts
-Connections with other users
+User login credentials<br/>
+Basic fitness profile (height/weight etc.)<br/>
+Past workouts<br/>
+Connections with other users<br/>
 
 <h2>Algorithms</h2>
-Fitness plan selection based on user profile
+Fitness plan selection based on user profile<br/>
 Determining feedback based on progress
 
 <h2>Markups</h2>
