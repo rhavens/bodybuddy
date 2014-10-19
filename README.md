@@ -31,3 +31,4 @@ Determining feedback based on progress
 
 #Comments by Ming
 * What you listed for features are not features.  Features are what the users do in your app (e.g., enter fitness profile)
+* What APIs will you be using?
