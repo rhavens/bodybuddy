@@ -8,10 +8,10 @@ http.createServer(function(request, response) {
 	console.log("Query " + query + " received.");
 	response.writeHead(200, {"Content-Type": "text/plain"});
 	if (pathname == "/pikachu") {
-		response.write("You've won the game!");
+		response.write("Hehe.");
 	}
 	else {
-		response.write("<html><h1>Hello World</h1></html>");
+		response.write("Site by Ryan Havens, Andrew Burgos, Jay DeStories, Max Ettleson, and Brett Fouss");
 	}
 	response.end();
     }).listen(8888);
