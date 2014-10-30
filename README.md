@@ -39,7 +39,3 @@ Determining feedback based on progress
 <img src="MarkupImages/SignUp.png" alt="singup.html markup"/>
 <img src="MarkupImages/Profile.png" alt="profile.html markup"/>
 <img src="MarkupImages/Home.png" alt="home.html markup"/>
-
-#Comments by Ming
-* What you listed for features are not features.  Features are what the users do in your app (e.g., enter fitness profile)
-* What APIs will you be using?
