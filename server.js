@@ -1,18 +1,11 @@
-var http = require("http");
-var url = require("url");
-var express = require('express');
+var express = require("express");
+var app = express();
 
-http.createServer(function(request, response) {
-	var pathname = url.parse(request.url).pathname;
-	console.log("Request for " + pathname + " received.");
-	var query = url.parse(request.url).query;
-	console.log("Query " + query + " received.");
-	response.writeHead(200, {"Content-Type": "text/plain"});
-	if (pathname == "/pikachu") {
-		response.write("Hehe.");
-	}
-	else {
-		response.write("Site by Ryan Havens, Andrew Burgos, Jay DeStories, Max Ettleson, and Brett Fouss");
-	}
-	response.end();
-}).listen(8888);
+set NODE_PATH=\home\ryan\Downloads\node_modules;%NODE_PATH%
+
+app.get('/', function(req, res){
+    res.send('hello world'); 
+});
+
+// Only works on 3000 regardless of what I set environment port to or how I set [value] in app.set('port', [value]).
+app.listen(3000);
