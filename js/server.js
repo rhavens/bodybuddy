@@ -1,11 +1,19 @@
 var express = require("express");
+var path = require("path");
 var app = express();
 
-set NODE_PATH=\home\ryan\Downloads\node_modules;%NODE_PATH%
+var __static = path.resolve('../static');
+var __views = path.resolve('../views');
+
+app.use('/img', express.static(__static + '/img'));
+app.use('/css', express.static(__static + '/css'));
 
 app.get('/', function(req, res){
-    res.send('hello world'); 
+    res.sendFile(__views + '/index.html'); 
 });
 
-// Only works on 3000 regardless of what I set environment port to or how I set [value] in app.set('port', [value]).
+app.get('/home', function(req, res){
+	res.send('hello world'); 
+});
+
 app.listen(3000);
