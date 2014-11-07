@@ -128,8 +128,8 @@ body {
  */
 
 .mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: #AAA; /* IE8 proofing */
+  color: rgba(255,255,255,.7);
 }
 
 
@@ -173,9 +173,35 @@ body {
    -------------------------------------------------------------------- */
 
 body {
-  background-color: #733;
+  background-color: #BD7437;
 }
 
-.static-inner {
+.masthead, .clearfix, .cover-container, .mastfoot {
   background-color: #333;
+  position: relative;
+  display: inline-block;
+  float: left;
 }
+
+.masthead, .mastfoot {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 90px;
+}
+
+.cover-text {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.cover-container {
+  min-height: 100%;
+  width: 800px;
+  float: none;
+}
+
+.spacer {
+  min-height: 25px;
+}
+
