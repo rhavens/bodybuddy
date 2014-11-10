@@ -16,3 +16,6 @@ Goals:
 1.Building algorithm for tracking each person's fitness goals.
 
 We have a google hangout every Saturday to discuss the goals for the next week.  As of now, we are on track with our goals, and everything we wanted to accomplish was accomplished.
+
+#Comments by Ming:
+* Cool that you are using Google Hangouts.
