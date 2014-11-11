@@ -13,8 +13,20 @@ app.get('/', function(req, res){
     res.sendFile(__views + '/index.html'); 
 });
 
+app.get('/signup', function(req, res){
+	res.sendFile(__views + '/signup.html');
+});
+
+app.get('/profile', function(req, res){
+	res.sendFile(__views + '/profile.html');
+});
+
 app.get('/home', function(req, res){
-	res.send('hello world'); 
+	res.sendFile(__views + '/home.html');
+});
+
+app.get('/login', function(req, res){
+	res.sendFile(__views + '/login.html');
 });
 
 app.listen(3000);
