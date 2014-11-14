@@ -5,7 +5,9 @@ function getStrengthWorkout (position, strength) {
         workout["exercises"] = [];
         switch (position) {
                 case: 0
+
                       workout["exercises"] += squat(strength["squat"]);
+                      workout["exercises"] += squat(strength["squat"]);//weights
                       workout["exercises"] += bench(strength["bench"]);
                       workout["exercises"] += row(strength["row"]);
 
@@ -25,7 +27,11 @@ function getStrengthWorkout (position, strength) {
 function getCardioWorkout (position, strength) {
 		switch (position) {
 				case:0
+<<<<<<< HEAD
 					workout["exercises"] = treadmill(strength["treadmill"]);
+=======
+					workout["exercises"] = treadmill(strength["treadmill"]); //amount of time
+>>>>>>> Max
 				case:1
 					workout["exercises"] = stairs(strength["stairs"]);
 				case:2
@@ -35,11 +41,19 @@ function getCardioWorkout (position, strength) {
 }
 
 function getFlexibilityWorkout () {
+<<<<<<< HEAD
 		workout["exercises"] = flexibility();
 }
 
 function getWeightLossWorkout (strength) {
 		workout["exercises"] = interval(strength["interval"]);
+=======
+		workout["exercises"] = flexibility(); //static
+}
+
+function getWeightLossWorkout (strength) {
+		workout["exercises"] = interval(strength["interval"]); //amount of time
+>>>>>>> Max
 }
 
 
