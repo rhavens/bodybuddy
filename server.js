@@ -19,7 +19,13 @@ app.get('/signup', function(req, res){
 });
 
 app.get('/profile', function(req, res){
-	res.sendFile(__views + '/profile.html');
+	//res.sendFile(__views + '/profile.html');
+
+        //var profile = ; // get the profile from the database
+        //var workout = getWorkout(profile);
+        res.render(__views + '/profile.jade',
+                {'workouts': 'test'// fill in with data form getWorkout
+                });
 });
 
 app.get('/home', function(req, res){
