@@ -1,5 +1,6 @@
 var express = require("express");
 var path = require("path");
+var jade = require("jade");
 var app = express();
 
 var __static = path.resolve('static');

@@ -1,0 +1,14 @@
+{
+  "name": "BodyBuddy",
+  "version": "0.0.1",
+  "description": "BodyBuddy workout management system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "path": "latest",
+    "jade": "latest"
+  }
+}
