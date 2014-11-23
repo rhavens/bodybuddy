@@ -9,6 +9,7 @@
   "dependencies": {
     "express": "latest",
     "path": "latest",
-    "jade": "latest"
+    "jade": "latest",
+    "passport": "latest"
   }
 }
