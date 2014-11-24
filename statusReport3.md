@@ -18,3 +18,7 @@ Challenges of the week:
 Goals for next week:
 
 We plan to have a fleshed out workout generation algorithm with information for most exercises added.  We also want to have our interface mostly finished.  As always, we'll know for sure after our hangout tomorrow afternoon.
+
+#Comments by Ming
+* Last week, you mentioned about putting together the database.  Did you do that yet? That's important.
+* Learning OAuth is critical and also not trivial.
