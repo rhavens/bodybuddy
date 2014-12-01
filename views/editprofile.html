@@ -1,0 +1,140 @@
+  <!DOCTYPE html>
+
+  <html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/custom.css" type="text/css">
+<script>
+
+$(document).ready(function() {
+	$("#icon1").click(function(){
+		var change = confirm("Are you sure you want to change your fitness goal?");
+		if (change) {
+			reset_icons();
+	   		$("#icon1").attr("src", "/img/goals/g_strength_on.png");
+	    	$(selection).html("<h3>Strength</h3>");
+		}
+	});
+	$("#icon2").click(function(){
+		var change = confirm("Are you sure you want to change your fitness goal?");
+		if (change) {
+			reset_icons();
+	    	$("#icon2").attr("src", "/img/goals/g_cardio_on.png");
+	    	$(selection).html("<h3>Cardio</h3>");
+	    }
+	});
+	$("#icon3").click(function(){
+		var change = confirm("Are you sure you want to change your fitness goal?");
+		if (change) {
+			reset_icons();
+	   	 	$("#icon3").attr("src", "/img/goals/g_weight_on.png");
+	   	 	$(selection).html("<h3>Weight Loss</h3>");
+	   	 }
+	});
+	$("#icon4").click(function(){
+		var change = confirm("Are you sure you want to change your fitness goal?");
+		if (change) {
+			reset_icons();
+	   		$("#icon4").attr("src", "/img/goals/g_flex_on.png");
+	    	$(selection).html("<h3>Flexibility</h3>");
+	    }
+	});
+
+	function reset_icons() {
+		$("#icon1").attr("src", "/img/goals/g_strength_off.png");
+		$("#icon2").attr("src", "/img/goals/g_cardio_off.png");
+		$("#icon3").attr("src", "/img/goals/g_weight_off.png");
+		$("#icon4").attr("src", "/img/goals/g_flex_off.png");
+	}
+});
+	   
+</script>
+</head>
+
+ <body>
+
+ 	<div class='top-banner'><h1 class='custHead'>Edit Profile</h1></div>
+
+ 	<div class="container">
+ 		<div class="cust-row">
+			<div class="left-col">
+				<h3>User info</h3>	
+				<p>Change your username and password</p>
+				<div class="input-group">
+  					<span class="input-group-addon">Username</span>
+  					<input type="text" class="form-control" placeholder="Username" required>
+				</div>
+				<div class="spacer"></div>
+				<div class="input-group">
+  					<span class="input-group-addon">Password</span>
+  					<input type="password" class="form-control" placeholder="Password" required>
+				</div>
+				<div class="spacer"></div>
+				<div class="input-group">
+  					<span class="input-group-addon">Confirm Password</span>
+  					<input type="password" class="form-control" placeholder="Password" required>
+				</div>
+				<div class="spacer"></div>
+				<div class="form-group">
+           			<label class="col-md-0 control-label"></label>
+              		<input type="button" id="val_button" class="btn btn-primary" value="Submit">
+				</div>
+				<h3>Personal info</h3>	
+				<p>Edit your personal and contact info here</p>
+				<div class="spacer"></div>
+				<div class="input-group">
+  					<span class="input-group-addon">First Name</span>
+  					<input type="text" class="form-control" placeholder="Body">
+				</div>
+				<div class="spacer"></div>
+				<div class="input-group">
+  					<span class="input-group-addon">Last Name</span>
+  					<input type="text" class="form-control" placeholder="Buddy">
+				</div>
+				<div class="spacer"></div>
+				<div class="input-group">
+  					<span class="input-group-addon">Email</span>
+  					<input type="text" class="form-control" placeholder="bodybuddy@gmail.com">
+				</div>
+				<div class="spacer"></div>
+				<div class="alert alert-danger" role="alert">
+  					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  					<span class="sr-only">Error:</span>
+  					Enter a valid email address
+				</div>
+				<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+  					<input class="span2" size="16" type="text" value="12-02-2012">
+  					<span class="add-on"><i class="icon-th"></i></span>
+				</div>
+				Gender --- 
+				<div  class="btn-group" data-toggle="buttons">
+    				<label class="btn btn-gender btn-default active">
+      				<input type="radio" id="gender" name="gender" value="female"> Male
+    				</label>
+    				<label class="btn btn-gender btn-default">
+        			<input type="radio" id="gender" name="gender" value="male"> Female
+    				</label>
+				</div>
+				<div class="form-group">
+           			<label class="col-md-0 control-label"></label>
+              		<input type="button" id="val_button" class="btn btn-primary" value="Submit">
+				</div>
+			</div>
+			<div class="right-col">
+				<h3>Fitness info</h3>
+				<p>My Fitness Goal</p>
+				<div>
+					<div class='g_icon'><img id='icon1' src='/img/goals/g_strength_off.png' style="cursor: pointer;" ></div>
+					<div class='g_icon'><img id='icon2' src='/img/goals/g_cardio_off.png' style="cursor: pointer;" ></div>
+					<div class='g_icon'><img id='icon3' src='/img/goals/g_weight_off.png' style="cursor: pointer;" ></div>
+					<div class='g_icon'><img id='icon4' src='/img/goals/g_flex_off.png' style="cursor: pointer;" ></div>
+				</div>
+				<div id='selection'><h3>Please select a goal</h3></div>
+		    </div>
+ 		</div>
+ 	</div>
+ </body>
+
+ </html>

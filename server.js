@@ -18,6 +18,11 @@ app.get('/signup', function(req, res){
 	res.sendFile(__views + '/signup.html');
 });
 
+app.get('/editprofile', function(req, res){
+    res.sendFile(__views + '/editprofile.html');
+    //res.render(__views + '/editprofile.html');
+});
+
 app.get('/profile', function(req, res){
 	//res.sendFile(__views + '/profile.html');
 
@@ -34,6 +39,10 @@ app.get('/home', function(req, res){
 
 app.get('/login', function(req, res){
 	res.sendFile(__views + '/login.html');
+});
+
+app.get('/about', function(req, res){
+    res.sendFile(__views + '/about.html');
 });
 
 app.listen(3000);
