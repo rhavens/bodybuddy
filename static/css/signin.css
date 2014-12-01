@@ -1,7 +1,22 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
   background-color: #eee;
+}
+
+h1 {
+  font-size: 60px;
+  color: #FFFFFF;
+  width: 100%;
+  text-align: left;
+  display: block;
+  position: relative;
+}
+
+p#about_text {
+  width: 100%;
+  font-size: 36px;
+  text-align: center;
+  display: block;
+  position: relative;
 }
 
 .form-signin {
@@ -88,6 +103,38 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.about_bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  position: relative;
+}
+
+.about_bg:after {
+  content: "";
+  background-image: url("../img/bg/about_bg.jpg");
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.about_head {
+  padding: 10%;
+}
+
 img#logoTrans {
-  margin-top: 15px;
+  padding-top: 10%;
+  max-width: 100%;
+}
+img#icons {
+  max-width: 100%;
 }
