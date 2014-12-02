@@ -17,14 +17,14 @@ var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
     db = databaseConnection;
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
 
 app.use('/img', express.static(__static + '/img'));
 app.use('/css', express.static(__static + '/css'));
 app.use('/js', express.static(__static + '/js'));
 
-var workouts = require("/js/workouts.js");
+var workouts = require("./js/workouts.js");
 
 app.get('/', function(req, res){
     res.sendFile(__views + '/index.html'); 

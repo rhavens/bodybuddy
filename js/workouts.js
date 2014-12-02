@@ -14,12 +14,12 @@ function squat(strength) {
 function getStrengthWorkout (position, strength) {
         var workout = [];
         switch (position) {
-                case: 0
+            case 0:
                       workout += squat(strength["Squat"]);//weights
                       workout += bench(strength["Bench"]);
                       workout += row(strength["Row"]);
                       break;
-                case: 1
+            case 1:
                       workout += squat(strength["Squat"]);
                       workout += overhead(strength["Overhead"]);
                       workout += deadlift(strength["Deadlift"]);
@@ -29,16 +29,16 @@ function getStrengthWorkout (position, strength) {
 }
 
 function getCardioWorkout (position, strength) {
-        var workout = [];
+    var workout = [];
 	switch (position) {
-		case:0
+		case 0:
 			workout += treadmill(strength["Treadmill"]); //amount of time
-		case:1
+		case 1:
 			workout += stairs(strength["Stairs"]);
-		case:2
+		case 2:
 			workout += elliptical(strength["Elliptical"]);
 	}
-        return workout;
+    return workout;
 }
 
 function getFlexibilityWorkout () {
@@ -86,16 +86,16 @@ function getWeightLossWorkout (position, strength) {
 module.exports = {
     getWorkout: function (profile) {
         switch (profile.goal) {
-            case: strength
+            case 'strength':
                 return getStrengthWorkout(profile.position, profile.strength);
                 break;
-            case: cardio
+            case 'cardio':
                	return getCardioWorkout(profile.position, profile.strength);	
                 break;
-            case: flexibility
+            case 'flexibility':
                 return getFlexibilityWorkout();
                 break;
-            case: weight
+            case 'weight':
                 return getWeightLossWorkout(profile.position, profile.strength);
                 break;
         }
