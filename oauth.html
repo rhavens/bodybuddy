@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+  <html>
+  <head>
+
+
+    <meta charset='utf-8' />
+    <button id="authorize-button" style="visibility: hidden">Authorize</button>
+    <script type="text/javascript" src ="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+      var clientId = '653963664016-botgpkk2rgdeo7aijhadanemtlhmn5lo.apps.googleusercontent.com';
+
+      var apiKey = 'AIzaSyCc9nRPG_3mnZHoGtDp4bfZ1X58Wuwd7sM';
+
+      var scopes = 'https://www.googleapis.com/auth/gmail.compose';
+
+      function handleClientLoad() {
+        gapi.client.setApiKey(apiKey);
+        window.setTimeout(checkAuth,1);
+      }
+
+      function checkAuth() {
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuth);
+      }
+
+      function handleAuth(authResult) {
+        var authorizeButton = document.getElementById('authorize-button');
+        if (authResult && !authResult.error) {
+          authorizeButton.style.visibility = 'hidden';
+          makeApiCall();
+        } else {
+          authorizeButton.style.visibility = '';
+          authorizeButton.onclick = handleAuthClick;
+        }
+      }
+
+      function handleAuthClick(event) {
+        
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+        return false;
+      }
+
+      
+      function makeApiCall() {
+        
+        gapi.client.load('gmail', 'v1').then(function() {
+          
+          var request = gapi.client.Users.messages.send({
+            'raw': 'Hello'
+          });
+
+          gmailClass.users.messages.send({
+            auth: OAuth2Client,
+            userId: "me",
+            resource: 
+            {  
+              raw: base64EncodedEmail
+            }           
+          }
+          
+          request.then(function(resp) {
+            var heading = document.createElement('id');
+            text = "i dont think this will work haha";
+            heading.appendChild(image);
+            heading.appendChild(document.createTextNode(text));
+
+            document.getElementById('content').appendChild(heading);
+          }, function(reason) {
+            console.log('Error: ' + reason.result.error.message);
+          });
+        });
+      }
+    </script>
+  </head>
+</html>
+
