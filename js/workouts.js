@@ -83,19 +83,21 @@ function getWeightLossWorkout (position, strength) {
         }
 }
 
-function getWorkout (profile) {
+module.exports = {
+    getWorkout: function (profile) {
         switch (profile.goal) {
-                case: strength
-                      return getStrengthWorkout(profile.position, profile.strength);
-                      break;
-                case: cardio
-               	      return getCardioWorkout(profile.position, profile.strength);	
-                      break;
-                case: flexibility
-                      return getFlexibilityWorkout();
-                      break;
-                case: weight
-                      return getWeightLossWorkout(profile.position, profile.strength);
-                      break;
+            case: strength
+                return getStrengthWorkout(profile.position, profile.strength);
+                break;
+            case: cardio
+               	return getCardioWorkout(profile.position, profile.strength);	
+                break;
+            case: flexibility
+                return getFlexibilityWorkout();
+                break;
+            case: weight
+                return getWeightLossWorkout(profile.position, profile.strength);
+                break;
         }
+    }
 }
