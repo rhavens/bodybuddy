@@ -6,7 +6,8 @@ function squat(strength) {
         var exercise = {"title":"Squat",
                         "description":"",
                         "intensity":("Do five sets of five reps at " + strength + " lbs.")
-        }
+        };
+        return exercise;
 }
 
 // fill in functions for Bench, Row, etc.
@@ -45,7 +46,7 @@ function getFlexibilityWorkout () {
         var workout = [];
         var chest = {"title":"Chest Stretch",
                      "description":"Take a pair of dumbells with the amount of weight you would use for about 12 reps of flies. Lie flat on a bench and lift them in a contracted position. Then slowly lower them where your pecs will be stretched to the maximum possible. Hold this position.",
-                     "image": ,// fill this in, linking to something in static, not another site
+                     //"image": ,// fill this in, linking to something in static, not another site
                              // get them from www.bodybuilding.com/fun/wotw80.htm first workout listed
                      "alt":"Image of a chest stretch"
         };
@@ -65,8 +66,9 @@ function getWeightLossWorkout (position, strength) {
                 // and box jumps
                 // following the format used below
                 var burpees = {"title":"Burpees",
-                               "description":"1. Begin in a standing position.<br>2. Drop into a squat position with your hands on the ground.<br>3. Kick your feet back, keeping your arms extended.<br>4. (Optional) Do a push-up.<br>5. Return your feet to a squat position.<br>6. Jump up from the squat position.<br><br>Source: en.wikipedia.org/wiki/Burpee_%28exercise%29"
+                               "description":"1. Begin in a standing position.<br>2. Drop into a squat position with your hands on the ground.<br>3. Kick your feet back, keeping your arms extended.<br>4. (Optional) Do a push-up.<br>5. Return your feet to a squat position.<br>6. Jump up from the squat position.<br><br>Source: en.wikipedia.org/wiki/Burpee_%28exercise%29",
                                "intensity":"Repeat for 45 seconds then take a 15 second break."
+                };
                 var mountainClimbers = {};
                 var jumpingJacks = {};
                 var lunges = {};
@@ -79,25 +81,24 @@ function getWeightLossWorkout (position, strength) {
                 workout += pushups;
                 workout += boxJumps;
                 return workout;
-                };
         }
 }
 
-module.exports = {
-    getWorkout: function (profile) {
-        switch (profile.goal) {
-            case 'strength':
-                return getStrengthWorkout(profile.position, profile.strength);
-                break;
-            case 'cardio':
-               	return getCardioWorkout(profile.position, profile.strength);	
-                break;
-            case 'flexibility':
-                return getFlexibilityWorkout();
-                break;
-            case 'weight':
-                return getWeightLossWorkout(profile.position, profile.strength);
-                break;
-        }
+function getWorkout (profile) {
+    switch (profile.goal) {
+        case 'strength':
+            return getStrengthWorkout(profile.position, profile.strength);
+            break;
+        case 'cardio':
+            return getCardioWorkout(profile.position, profile.strength);	
+            break;
+        case 'flexibility':
+            return getFlexibilityWorkout();
+            break;
+        case 'weight':
+            return getWeightLossWorkout(profile.position, profile.strength);
+            break;
     }
 }
+
+exports.getWorkout = getWorkout;
