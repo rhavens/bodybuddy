@@ -39,9 +39,21 @@ app.get('/editprofile', function(req, res){
     //res.render(__views + '/editprofile.html');
 });
 
+function motivationalMessage() {
+    var num = Math.floor(Math.random() * 3);    
+    switch (num) {
+        case 0:
+            return "Do not fear the unknown.";
+        case 1:
+            return "I will show you the path.";
+        case 2:
+            return "Your skills are inferior!";
+    }
+}
+
 app.get('/profile', function(req, res){
 	//res.sendFile(__views + '/profile.html');
-    var identifier = ;
+    var identifier = "testprofile";
     db.collection('profiles', function(er, collection) {
         collection.find({"account":identifier}).toArray(function(err, profiles) {
             var profile = profiles[0];
@@ -49,8 +61,12 @@ app.get('/profile', function(req, res){
                 res.redirect('/login');
             }
             var workout = workouts.getWorkout(profile);
+            var feedback = motivationalMessage();
             res.render(__views + '/profile.jade',
-                {'workouts': 'test'// fill in with data form getWorkout
+                {'workout': workout,
+                 'date': new Date(),
+                 'feedback': feedback,
+                 // 'graphs':
                 });
         });
     });
