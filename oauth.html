@@ -48,15 +48,6 @@
           var request = gapi.client.Users.messages.send({
             'raw': 'Hello'
           });
-
-          gmailClass.users.messages.send({
-            auth: OAuth2Client,
-            userId: "me",
-            resource: 
-            {  
-              raw: base64EncodedEmail
-            }           
-          }
           
           request.then(function(resp) {
             var heading = document.createElement('id');
