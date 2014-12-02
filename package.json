@@ -10,6 +10,10 @@
     "express": "latest",
     "path": "latest",
     "jade": "latest",
-    "passport": "latest"
+    "passport": "latest",
+    "cookieparser": "latest",
+    "mongodb": "latest",
+    "body-parser": "latest",
+    "validator": "latest"
   }
 }
