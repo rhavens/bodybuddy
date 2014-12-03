@@ -83,6 +83,31 @@ function getStrengthWorkout (position, strength) {
         return workout;
 }
 
+
+function treadmill(strength) {
+    var exercise = {"title":"Treadmill",
+                        "description":"Take caution while on the treadmill. Run at your own pace, but push yourself. Keep your heart rate up for an extended period of time, and make sure to break a sweat.",
+                        "intensity":("Run for " + strength + " minutes")
+        };
+        return exercise;
+}
+
+function stairs(strength) {
+    var exercise = {"title":"Stairs",
+                        "description":"Find a flight of stairs high enough so that you can do prolonged sets. Keep a steady pace, and increase your heart rate. You should feel slight muscle pain in your quads. Make sure to hit every step on the way up and down. Take a short, minute long break between sets. Aim for more reps.",
+                        "intensity":("Do at least 10 sets of stairs, for no longer than" + strength + " minutes of exercise")
+        };
+        return exercise;
+}
+
+function elliptical(strength) {
+    var exercise = {"title":"Elliptical",
+                        "description":"Focus on good form when using the ellipticals. Push yourself to keep your heart rate up for an extended period of time.",
+                        "intensity":("Do the ellipticals for " + strength + " minutes at your own pace.")
+        };
+        return exercise;
+}
+
 function getCardioWorkout (position, strength) {
     var workout = [];
 	switch (position) {
