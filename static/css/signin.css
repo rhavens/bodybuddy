@@ -131,6 +131,10 @@ p#about_text {
   padding: 10%;
 }
 
+.under_nav {
+  padding-top:5%;
+}
+
 img#logoTrans {
   padding-top: 10%;
   max-width: 100%;
