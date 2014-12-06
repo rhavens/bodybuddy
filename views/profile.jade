@@ -1,10 +1,45 @@
 doctype
 html
   head
-    title FitTrack: Your Profile
+    title BodyBuddy: Your Profile
     meta(charset='utf-8')
   body
     #date #{date}
-    #workout #{workouts}
+    mixin workoutListing(name, intensity, description)
+      li #{name}: #{intensity}<br>#{description}
+    #workout
+      h2 Next Workout
+      ul#exercises
+        for workout in workouts
+          +workoutListing(workout.title, workout.intensity, workout.description)
     #feedback #{feedback}
-    #graphs #{graphs}
+    #chart
+    script(type='text/javascript' src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}")
+    script.
+      var history = #{history};
+      history = history.history.map(function(point) {
+        return [point.time, point.avg];
+      });
+      function renderChart() {
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('number', 'Strength');
+        dataTable.addColumn('number', 'Time');
+        dataTable.addRows(history);
+
+        var dataView = new google.visualization.DataView(dataTable);
+      
+        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+        var options = {
+          width: 400, height: 240,
+          legend: 'none',
+          pointSize: 3,
+            hAxis:{
+            title:'Time'
+            },
+            vAxis:{
+            title:'Progress'
+            }
+        };
+        chart.draw(dataView, options);
+      }
+      window.onload = renderChart;
