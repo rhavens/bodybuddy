@@ -16,22 +16,23 @@ html
     #chart
     script(type='text/javascript' src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}")
     script.
-      var history = #{history};
-      history = history.history.map(function(point) {
-        return [point.time, point.avg];
-      });
+      var historyLit = !{history};
+      var historyArr = [];
+      for (i = 0; i < historyLit.history.length; ++i) {
+        historyArr[i] = [historyLit.history[i].time, historyLit.history[i].avg];
+      }
       function renderChart() {
         var dataTable = new google.visualization.DataTable();
-        dataTable.addColumn('number', 'Strength');
         dataTable.addColumn('number', 'Time');
-        dataTable.addRows(history);
+        dataTable.addColumn('number', 'Progress');
+        dataTable.addRows(historyArr);
 
         var dataView = new google.visualization.DataView(dataTable);
       
         var chart = new google.visualization.LineChart(document.getElementById('chart'));
         var options = {
-          width: 400, height: 240,
-          legend: 'none',
+          width: 600, height: 340,
+          //legend: 'none',
           pointSize: 3,
             hAxis:{
             title:'Time'
