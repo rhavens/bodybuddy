@@ -14,6 +14,7 @@ $(document).ready(function() {
 		if (change) {
 			reset_icons();
 	   		$("#icon1").attr("src", "/img/goals/g_strength_on.png");
+	   		$("#sendGoal").attr("value", "strength");
 	    	$(selection).html("<h3>Strength</h3>");
 		}
 	});
@@ -22,6 +23,7 @@ $(document).ready(function() {
 		if (change) {
 			reset_icons();
 	    	$("#icon2").attr("src", "/img/goals/g_cardio_on.png");
+	    	$("#sendGoal").attr("value", "cardio");
 	    	$(selection).html("<h3>Cardio</h3>");
 	    }
 	});
@@ -30,6 +32,7 @@ $(document).ready(function() {
 		if (change) {
 			reset_icons();
 	   	 	$("#icon3").attr("src", "/img/goals/g_weight_on.png");
+	   	 	$("#sendGoal").attr("value", "weight");
 	   	 	$(selection).html("<h3>Weight Loss</h3>");
 	   	 }
 	});
@@ -38,6 +41,7 @@ $(document).ready(function() {
 		if (change) {
 			reset_icons();
 	   		$("#icon4").attr("src", "/img/goals/g_flex_on.png");
+	   		$("#sendGoal").attr("value", "flexibility");
 	    	$(selection).html("<h3>Flexibility</h3>");
 	    }
 	});
@@ -129,6 +133,7 @@ $(document).ready(function() {
 					<div class='g_icon'><img id='icon4' src='/img/goals/g_flex_off.png' style="cursor: pointer;" ></div>
 				</div>
 				<div id='selection'><h3>Please select a goal</h3></div>
+				<input type="hidden" id="sendGoal" name="goal" value="none" class="form-control">
 			</div>
 		</div>
 	</form>
