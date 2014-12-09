@@ -46,7 +46,7 @@ var __static = path.resolve('static');
 var __views = path.resolve('views');
 
 // configure Express
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 app.use(logger());
 app.use(cookieparser());
 app.use(methodOverride());
