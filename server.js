@@ -105,10 +105,10 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
         });
     }
     var profile = {};
-    profile.firstName = sanitize(req.body.firstname);
-    profile.lastName = sanitize(req.body.lastname);
+    profile.firstname = sanitize(req.body.firstname);
+    profile.lastname = sanitize(req.body.lastname);
     req.assert('emailaddr', 'Invalid email address').isEmail();
-    profile.emailAddr = sanitize(req.body.emailaddr);
+    profile.email = sanitize(req.body.email);
     profile.gender = sanitize(req.body.gender);
     profile.birthday = sanitize(req.body.birthday);
     profile.goal = sanitize(req.body.goal);
