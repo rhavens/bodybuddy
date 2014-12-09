@@ -3,7 +3,7 @@ var path = require("path");
 var jade = require("jade");
 var cookieParser = require("cookie-parser");
 var bodyparser = require('body-parser');
-var validator = require('validator');
+var validator = require('express-validator');
 var app = express();
 var passport = require('passport')
 var util = require('util')
@@ -58,6 +58,7 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
+app.use(validator());
 
 app.use('/img', express.static(__static + '/img'));
 app.use('/css', express.static(__static + '/css'));
@@ -88,14 +89,14 @@ app.get('/editprofile', ensureAuthenticated, function(req, res) {
 });
 
 app.post('/editprofile', ensureAuthenticated, function(req, res) {
-    var firstName = validator.sanitize(req.body.firstName).xss();
-    var lastName = validator.sanitize(req.body.lastName).xss();
-    var emailAddr = vaidator.sanitize(req.body.emailAddr).xss();
-    validator.check(emailAddr).isEmail();
-    var gender = validator.sanitize(req.body.gender).xss();
-    var birthday = validator.sanitize(req.body.birthday).xss();
-    var height = validator.sanitize(req.body.height).toInt();
-    var weight = validator.sanitize(req.body.weight).toInt();
+    var firstName = req.sanitize('firstName').xss(true);
+    var lastName = req.sanitize('lastName').xss(true);
+    req.assert('emailAddr', 'Invalid email address').isEmail();
+    var emailAddr = req.sanitize('emailAddr').trim();
+    var gender = req.sanitize('gender').xss(true);
+    var birthday = req.sanitize('birthday').xss(true);
+    var height = req.sanitize('height').toInt();
+    var weight = req.sanitize('weight').toInt();
 
     if (!(firstName && lastName && emailAddr && gender && birthday && height && weight)) {
         res.redirect('/editprofile');

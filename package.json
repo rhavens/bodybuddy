@@ -14,7 +14,7 @@
     "cookie-parser": "latest",
     "mongodb": "latest",
     "body-parser": "latest",
-    "validator": "latest",
+    "express-validator": "latest",
     "body-parser": "latest",
     "morgan": "latest",
     "method-override": "latest",
