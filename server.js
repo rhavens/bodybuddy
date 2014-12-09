@@ -92,7 +92,9 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     var lastName = validator.sanitize(request.body.lastName).xss();
     var emailAddr = vaidator.sanitize(request.body.emailAddr).xss();
     var gender = validator.sanitize(request.body.gender).xss();
-    // ...
+    var birthday = validator.sanitize(request.body.birthday).xss();
+    var height = validator.sanitize(request.body.height).xss();
+    var weight = validator.sanitize(request.body.weight).xss();
 });
 
 function motivationalMessage() {
