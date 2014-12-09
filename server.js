@@ -12,8 +12,8 @@ var logger = require('morgan')
 var session = require('express-session')
 var methodOverride = require('method-override');
 
-var FACEBOOK_APP_ID = '1591881341039856'
-var FACEBOOK_APP_SECRET = "4be3e009e43e201b451ef4dc0df19cce";
+var FACEBOOK_APP_ID = '392824514208595'
+var FACEBOOK_APP_SECRET = "a208eb3e5b07e78376fa25df0842b7cb";
 
 passport.serializeUser(function(user, done) {
   done(null, user);
