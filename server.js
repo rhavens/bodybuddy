@@ -146,8 +146,6 @@ function motivationalMessage() {
 function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
         collection.find({'account':identifier}).toArray(function(err, profiles) {
-            console.log("profiles is: " + profiles);
-            console.log("profiles[0] is: " + profiles[0]);
             return profiles[0];
         });
     });
@@ -173,6 +171,9 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     var identifier = req.user.id;
     var profile = getProfile(identifier);
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
+    // debugging
+    res.send(JSON.stringify(profile));
+    return;
     if (!profile) {
         res.redirect('/editprofile');
     }
