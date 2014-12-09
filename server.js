@@ -119,7 +119,7 @@ function motivationalMessage() {
 // {'account':123456789,
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
-function getProfile(indentifier) {
+function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
         collection.find({'account':identifier}).toArray(function(err, profiles) {
             return profiles[0];
@@ -177,7 +177,7 @@ app.get('/auth/facebook',
 });
 
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/profile');
 });
