@@ -4,6 +4,7 @@ var jade = require("jade");
 var cookieParser = require("cookie-parser");
 var bodyparser = require('body-parser');
 var validator = require('express-validator');
+var expressSanitizer = require('express-sanitizer');
 var app = express();
 var passport = require('passport')
 var util = require('util')
@@ -59,6 +60,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(validator());
+app.use(expressSanitizer());
 
 app.use('/img', express.static(__static + '/img'));
 app.use('/css', express.static(__static + '/css'));
@@ -89,12 +91,15 @@ app.get('/editprofile', ensureAuthenticated, function(req, res) {
 });
 
 app.post('/editprofile', ensureAuthenticated, function(req, res) {
-    var firstName = req.sanitize('firstName').xss(true);
-    var lastName = req.sanitize('lastName').xss(true);
+    function sanitize (data){
+       return req.sanitize(req.param('data'));
+    }
+    var firstName = sanitize(req.body.firstName);
+    var lastName = sanitize(req.body.lastName);
     req.assert('emailAddr', 'Invalid email address').isEmail();
-    var emailAddr = req.sanitize('emailAddr').trim();
-    var gender = req.sanitize('gender').xss(true);
-    var birthday = req.sanitize('birthday').xss(true);
+    var emailAddr = sanitize(req.body.emailAddr);
+    var gender = sanitize(req.body.gender);
+    var birthday = sanitize(req.body.birthday);
     var height = req.sanitize('height').toInt();
     var weight = req.sanitize('weight').toInt();
 
@@ -103,6 +108,8 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     }
     res.redirect('/editprofile');
 });
+
+
 
 function motivationalMessage() {
     var num = Math.floor(Math.random() * 3);    
