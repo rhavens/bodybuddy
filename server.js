@@ -48,7 +48,7 @@ var __views = path.resolve('views');
 // configure Express
 app.set('view engine', 'ejs');
 app.use(logger());
-app.use(cookieParser());
+app.use(cookieparser());
 app.use(methodOverride());
 app.use(session({ secret: 'keyboard cat' }));
 // Initialize Passport!  Also use passport.session() middleware, to support
