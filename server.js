@@ -114,6 +114,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.goal = sanitize(req.body.goal);
     profile.height = parseInt(sanitize(req.body.height));
     profile.weight = parseInt(sanitize(req.body.weight));
+    profile.position = 0;
     profile.account = req.user.id;
 
     if (!(profile.firstName && profile.lastName && profile.emailAddr &&
@@ -121,7 +122,6 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
         res.redirect('/editprofile');
     }
     storeProfile(profile);
-    res.redirect('/editprofile');
 });
 
 
