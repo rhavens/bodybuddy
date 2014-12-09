@@ -111,6 +111,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.emailAddr = sanitize(req.body.emailAddr);
     profile.gender = sanitize(req.body.gender);
     profile.birthday = sanitize(req.body.birthday);
+    profile.goal = sanitize(req.body.goal);
     profile.height = parseInt(req.sanitize('height'));
     profile.weight = parseInt(req.sanitize('weight'));
     profile.account = req.user.id;
