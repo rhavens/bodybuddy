@@ -183,8 +183,6 @@ img {
 .cust-row {
   color:#018CF3;
   text-shadow:none;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 .left-col {
@@ -249,6 +247,49 @@ img {
 
 .alert-danger {
   display:none;
+}
+
+.inner_container {
+  width: 50%;
+  float: right;
+}
+
+.custHead {
+  font-style: none;
+}
+
+.page {
+  max-width: 70%;
+  margin-left: 15%;
+}
+
+.bottom {
+  margin: 35px;
+  padding: 20px;
+  color: white;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+img#logo {
+  display: block;
+  max-height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#innerleftcol {
+  width: 50%;
+  float: left;
+  font-size: 16px;
+  color: grey;
+}
+
+#innerrightcol {
+  margin-left: 52%;
 }
 
 #val_button {

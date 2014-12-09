@@ -3,17 +3,23 @@ html
   head
     title BodyBuddy: Your Profile
     meta(charset='utf-8')
+    link(rel='stylesheet', href='/css/profile.css')
   body
-    #date #{date}
+    .top Welcome Back!
+    .top#date Today is #{date}
     mixin workoutListing(name, intensity, description)
       li #{name}: #{intensity}<br>#{description}
-    #workout
-      h2 Next Workout
+    #page
+      .left
+        h2#inner Feedback   
+        #feedback #{feedback}      
+      #chart  
+    .bottom#workouts
+      h2#inner Your Next Workout
       ul#exercises
-        for workout in workouts
-          +workoutListing(workout.title, workout.intensity, workout.description)
-    #feedback #{feedback}
-    #chart
+      for workout in workouts
+            +workoutListing(workout.title, workout.intensity, workout.description)
+    img(id="logo" src="/img/bblogo.png" alt="Body Buddy Logo")         
     script(type='text/javascript' src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}")
     script.
       var historyLit = !{history};
@@ -31,8 +37,8 @@ html
       
         var chart = new google.visualization.LineChart(document.getElementById('chart'));
         var options = {
-       	  colors:['#428BCA'],
-          width: 600, height: 340,
+           colors:['#428BCA'],
+           width: 600, height: 340,
           //legend: 'none',
           pointSize: 3,
             hAxis:{

@@ -58,29 +58,9 @@ $(document).ready(function() {
  	<div class='top-banner'><h1 class='custHead'>Edit Profile</h1></div>
 
  	<div class="container">
+ 		<form action="http://bodybuddy.herokuapp.com/editprofile" method="POST">
+ 		<div class="page">
  		<div class="cust-row">
-			<div class="left-col">
-				<h3>User info</h3>	
-				<p>Change your username and password</p>
-				<div class="input-group">
-  					<span class="input-group-addon">Username</span>
-  					<input type="text" class="form-control" placeholder="Username" required>
-				</div>
-				<div class="spacer"></div>
-				<div class="input-group">
-  					<span class="input-group-addon">Password</span>
-  					<input type="password" class="form-control" placeholder="Password" required>
-				</div>
-				<div class="spacer"></div>
-				<div class="input-group">
-  					<span class="input-group-addon">Confirm Password</span>
-  					<input type="password" class="form-control" placeholder="Password" required>
-				</div>
-				<div class="spacer"></div>
-				<div class="form-group">
-           			<label class="col-md-0 control-label"></label>
-              		<input type="button" id="val_button" class="btn btn-primary" value="Submit">
-				</div>
 				<h3>Personal info</h3>	
 				<p>Edit your personal and contact info here</p>
 				<div class="spacer"></div>
@@ -99,32 +79,49 @@ $(document).ready(function() {
   					<input type="text" class="form-control" placeholder="bodybuddy@gmail.com">
 				</div>
 				<div class="spacer"></div>
-				<div class="alert alert-danger" role="alert">
-  					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  					<span class="sr-only">Error:</span>
-  					Enter a valid email address
+				<div id="innerleftcol">
+					<h4> Birthday </h4>
+					<div class="input-group">
+  					<span class="input-group-addon">Birthday</span>
+  					<input type="text" class="form-control" placeholder="MM/DD/YYYY">
+					</div>
 				</div>
-				<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-  					<input class="span2" size="16" type="text" value="12-02-2012">
-  					<span class="add-on"><i class="icon-th"></i></span>
+				<div id="innerrightcol">
+					<div id="innerleftcol">
+					<h4> Gender </h4>
+      					<input type="radio" id="gender" name="gender" value="female"> Male
+      					<br>
+        				<input type="radio" id="gender" name="gender" value="male"> Female	
+					</div>
+					<div id="innerrightcol">
+      					<div id="innerrightcol">
+              				<input type="submit" value="Submit" class="btn btn-default btn-lg" id="submit">
+							</input> 
+						</div>
+					</div>
 				</div>
-				Gender --- 
-				<div  class="btn-group" data-toggle="buttons">
-    				<label class="btn btn-gender btn-default active">
-      				<input type="radio" id="gender" name="gender" value="female"> Male
-    				</label>
-    				<label class="btn btn-gender btn-default">
-        			<input type="radio" id="gender" name="gender" value="male"> Female
-    				</label>
-				</div>
-				<div class="form-group">
-           			<label class="col-md-0 control-label"></label>
-              		<input type="button" id="val_button" class="btn btn-primary" value="Submit">
-				</div>
-			</div>
-			<div class="right-col">
+				<br>
+				<div class="spacer"></div>
+				<div class="spacer"></div>
+				<br>
 				<h3>Fitness info</h3>
 				<p>My Fitness Goal</p>
+				<div id="innerleftcol">
+					<div class="input-group">
+  					<span class="input-group-addon">Height (ft) </span>
+  					<input type="text" class="form-control" placeholder="5'11">
+					</div>
+				</div>
+				<div id="innerrightcol">
+					<div class="input-group">
+  					<span class="input-group-addon">Weight (lbs.) </span>
+  					<input type="text" class="form-control" placeholder="150">
+					</div>
+				</div>
+				<br>
+				<div class="spacer"></div>
+				<div class="spacer"></div>
+				<br>
 				<div>
 					<div class='g_icon'><img id='icon1' src='/img/goals/g_strength_off.png' style="cursor: pointer;" ></div>
 					<div class='g_icon'><img id='icon2' src='/img/goals/g_cardio_off.png' style="cursor: pointer;" ></div>
@@ -132,9 +129,11 @@ $(document).ready(function() {
 					<div class='g_icon'><img id='icon4' src='/img/goals/g_flex_off.png' style="cursor: pointer;" ></div>
 				</div>
 				<div id='selection'><h3>Please select a goal</h3></div>
-		    </div>
- 		</div>
+			</div>
+		</div>
+	</form>
  	</div>
+ 	<div class="bottom"><img id="logo" src="/img/bblogo.png" alt="Body Buddy Logo"></div>
  </body>
 
  </html>

@@ -1,0 +1,56 @@
+body {
+	padding-top: 20px;
+	font-family: "Helvetica";
+}
+
+h2#inner {
+	text-align: center;
+}
+
+.top {
+	text-align: center;
+	font-size: 36px;
+}
+
+#date {
+	text-align: center;
+	font-size: 18px;
+}
+
+#page {
+	width: 80%;
+	padding-left: 5%;
+}
+
+.left {
+	width:50%;
+	padding-left: 10px;
+	padding-top: 10px;
+	margin-top: 15px;
+	float: left;
+	z-index: 99;
+}
+
+#chart {
+	margin-left: 50%;
+	margin-top: 15px;
+	z-index: -99;
+}
+
+.bottom#workouts {
+	margin: 35px;
+	padding: 20px;
+	color: white;
+	background-color: #018CF3;
+	border-radius: 15px;
+	margin-bottom: 10px;
+}
+
+img#logo {
+	display: block;
+	max-height: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
