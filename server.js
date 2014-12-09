@@ -99,8 +99,9 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
             collection.insert(profileToStore, function(err) {
                 if (err) {
                     res.redirect('/editprofile');
-                }
+                } else {
                 res.redirect('/profile');
+                }
             });
         });
     }
