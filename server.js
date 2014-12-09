@@ -82,9 +82,17 @@ app.get('/signup', ensureAuthenticated, function(req, res) {
 	res.sendFile(__views + '/signup.html');
 });
 
-app.get('/editprofile', /*ensureAuthenticated,*/ function(req, res) {
+app.get('/editprofile', ensureAuthenticated, function(req, res) {
     res.sendFile(__views + '/editprofile.html');
     //res.render(__views + '/editprofile.html');
+});
+
+app.post('/editprofile', ensureAuthenticated, function(req, res) {
+    var firstName = validator.sanitize(request.body.firstName).xss();
+    var lastName = validator.sanitize(request.body.lastName).xss();
+    var emailAddr = vaidator.sanitize(request.body.emailAddr).xss();
+    var gender = validator.sanitize(request.body.gender).xss();
+    // ...
 });
 
 function motivationalMessage() {
@@ -122,7 +130,7 @@ function getHistory(identifier) {
     });
 }
 
-app.get('/profile', /*ensureAuthenticated,*/ function(req, res){
+app.get('/profile', ensureAuthenticated, function(req, res){
     var identifier = req.user;
     var profile = getProfile(identifier);
     var history = {'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};//getHistory(identifier);
