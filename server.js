@@ -91,21 +91,34 @@ app.get('/editprofile', ensureAuthenticated, function(req, res) {
 });
 
 app.post('/editprofile', ensureAuthenticated, function(req, res) {
-    function sanitize (data){
+    function sanitize(data){
        return req.sanitize(req.param('data'));
     }
-    var firstName = sanitize(req.body.firstName);
-    var lastName = sanitize(req.body.lastName);
+    function storeProfile(profileToStore) {
+        db.collection('profiles', function(er, collection) {
+            collection.insert(profileToStore, function(err) {
+                if (err) {
+                    req.redirect('/editproifle');
+                }
+                req.redirect('/profile');
+            });
+        });
+    }
+    var profile = {};
+    profile.firstName = sanitize(req.body.firstName);
+    profile.lastName = sanitize(req.body.lastName);
     req.assert('emailAddr', 'Invalid email address').isEmail();
-    var emailAddr = sanitize(req.body.emailAddr);
-    var gender = sanitize(req.body.gender);
-    var birthday = sanitize(req.body.birthday);
-    var height = req.sanitize('height').toInt();
-    var weight = req.sanitize('weight').toInt();
+    profile.emailAddr = sanitize(req.body.emailAddr);
+    profile.gender = sanitize(req.body.gender);
+    profile.birthday = sanitize(req.body.birthday);
+    profile.height = parseInt(req.sanitize('height'));
+    profile.weight = parseInt(req.sanitize('weight'));
 
-    if (!(firstName && lastName && emailAddr && gender && birthday && height && weight)) {
+    if (!(profile.firstName && profile.lastName && profile.emailAddr &&
+            profile.gender && profile.birthday && profile.height && profile.weight)) {
         res.redirect('/editprofile');
     }
+    storeProfile(profile);
     res.redirect('/editprofile');
 });
 
@@ -147,13 +160,13 @@ function getHistory(identifier) {
 }
 
 app.get('/profile', ensureAuthenticated, function(req, res){
-    var identifier = req.user;
+    var identifier = req.user.id;
     var profile = getProfile(identifier);
-    var history = {'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};//getHistory(identifier);
+    var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     if (!profile) {
         res.redirect('/editprofile');
     }
-    var workout = /*[{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] */workouts.getWorkout(profile);
+    var workout = workouts.getWorkout(profile);/*[{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] */
     var feedback = motivationalMessage();
     res.render(__views + '/profile.jade',
         {'workouts': workout,
