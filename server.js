@@ -145,7 +145,7 @@ function motivationalMessage() {
 //  'position':3}
 function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
-        console.log(collection.findOne({'account':identifier});
+        console.log(collection.findOne({'account':identifier}));
         return collection.findOne({'account':identifier});
     });
 }
