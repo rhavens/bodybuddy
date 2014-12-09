@@ -146,6 +146,8 @@ function motivationalMessage() {
 function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
         collection.find({'account':identifier}).toArray(function(err, profiles) {
+            console.log("profiles is: " + profiles);
+            console.log("profiles[0] is: " + profiles[0]);
             return profiles[0];
         });
     });
