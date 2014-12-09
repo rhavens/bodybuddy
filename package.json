@@ -14,6 +14,12 @@
     "cookieparser": "latest",
     "mongodb": "latest",
     "body-parser": "latest",
-    "validator": "latest"
+    "validator": "latest",
+    "body-parser": ">= 1.4.3",
+    "morgan": ">= 1.1.1",
+    "method-override": ">= 2.0.2",
+    "express-session": ">= 1.6.1",
+    "passport": ">= 0.0.0",
+    "passport-facebook": ">= 0.0.0"
   }
 }
