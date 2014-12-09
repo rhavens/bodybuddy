@@ -10,39 +10,28 @@
 
 $(document).ready(function() {
 	$("#icon1").click(function(){
-		var change = confirm("Are you sure you want to change your fitness goal?");
-		if (change) {
-			reset_icons();
-	   		$("#icon1").attr("src", "/img/goals/g_strength_on.png");
-	   		$("#sendGoal").attr("value", "strength");
-	    	$(selection).html("<h3>Strength</h3>");
-		}
+		reset_icons();
+	   	$("#icon1").attr("src", "/img/goals/g_strength_on.png");
+   		$("#sendGoal").attr("value", "strength");
+    	$(selection).html("<h3>Strength</h3>");
 	});
 	$("#icon2").click(function(){
-		var change = confirm("Are you sure you want to change your fitness goal?");
-		if (change) {
-			reset_icons();
-	    	$("#icon2").attr("src", "/img/goals/g_cardio_on.png");
-	    	$("#sendGoal").attr("value", "cardio");
-	    	$(selection).html("<h3>Cardio</h3>");
-	    }
+		reset_icons();
+	   	$("#icon2").attr("src", "/img/goals/g_cardio_on.png");
+	   	$("#sendGoal").attr("value", "cardio");
+	   	$(selection).html("<h3>Cardio</h3>");
 	});
 	$("#icon3").click(function(){
-		var change = confirm("Are you sure you want to change your fitness goal?");
-		if (change) {
-			reset_icons();
-	   	 	$("#icon3").attr("src", "/img/goals/g_weight_on.png");
-	   	 	$("#sendGoal").attr("value", "weight");
-	   	 	$(selection).html("<h3>Weight Loss</h3>");
-	   	 }
+		reset_icons();
+	   	$("#icon3").attr("src", "/img/goals/g_weight_on.png");
+	   	$("#sendGoal").attr("value", "weight");
+	   	$(selection).html("<h3>Weight Loss</h3>");
 	});
 	$("#icon4").click(function(){
-		var change = confirm("Are you sure you want to change your fitness goal?");
-		if (change) {
-			reset_icons();
-	   		$("#icon4").attr("src", "/img/goals/g_flex_on.png");
-	   		$("#sendGoal").attr("value", "flexibility");
-	    	$(selection).html("<h3>Flexibility</h3>");
+		reset_icons();
+	   	$("#icon4").attr("src", "/img/goals/g_flex_on.png");
+	   	$("#sendGoal").attr("value", "flexibility");
+	   	$(selection).html("<h3>Flexibility</h3>");
 	    }
 	});
 
