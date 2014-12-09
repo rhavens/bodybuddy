@@ -98,7 +98,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
         db.collection('profiles', function(er, collection) {
             collection.insert(profileToStore, function(err) {
                 if (err) {
-                    req.redirect('/editproifle');
+                    req.redirect('/editprofile');
                 }
                 req.redirect('/profile');
             });
@@ -154,7 +154,12 @@ function getProfile(identifier) {
 function getHistory(identifier) {
     db.collection('history', function(er, collection) {
         collection.find({'account':identifier}).toArray(function(err, histories) {
-            return histories[0].history;
+            if (histories[0]) {
+                // the actual history
+                return histories[0].history;
+            }
+            // undefined
+            return histories[0];
         });
     });
 }
