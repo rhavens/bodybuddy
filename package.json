@@ -14,7 +14,6 @@
     "cookieparser": "latest",
     "mongodb": "latest",
     "body-parser": "latest",
-    "validator": "latest",
-   // "nodemailer": "latest"
+    "validator": "latest"
   }
 }
