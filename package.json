@@ -11,7 +11,7 @@
     "path": "latest",
     "jade": "latest",
     "passport": "latest",
-    "cookieparser": "latest",
+    "cookie-parser": "latest",
     "mongodb": "latest",
     "body-parser": "latest",
     "validator": "latest",

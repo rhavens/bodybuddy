@@ -1,7 +1,7 @@
 var express = require("express");
 var path = require("path");
 var jade = require("jade");
-var cookieparser = require("cookieparser");
+var cookieParser = require("cookie-parser");
 var bodyparser = require('body-parser');
 var validator = require('validator');
 var app = express();
@@ -48,7 +48,7 @@ var __views = path.resolve('views');
 // configure Express
 app.set('view engine', 'jade');
 app.use(logger('combined'));
-app.use(cookieparser());
+app.use(cookieParser());
 app.use(methodOverride());
 app.use(session({ secret: 'keyboard cat' }));
 // Initialize Passport!  Also use passport.session() middleware, to support
@@ -78,13 +78,11 @@ app.get('/', function(req, res) {
     res.sendFile(__views + '/index.html'); 
 });
 
-/*
 app.get('/signup', ensureAuthenticated, function(req, res) {
 	res.sendFile(__views + '/signup.html');
 });
-*/
 
-app.get('/editprofile', ensureAuthenticated, function(req, res) {
+app.get('/editprofile', /*ensureAuthenticated,*/ function(req, res) {
     res.sendFile(__views + '/editprofile.html');
     //res.render(__views + '/editprofile.html');
 });
@@ -124,7 +122,7 @@ function getHistory(identifier) {
     });
 }
 
-app.get('/profile', ensureAuthenticated, function(req, res){
+app.get('/profile', /*ensureAuthenticated,*/ function(req, res){
     var identifier = req.user;
     var profile = getProfile(identifier);
     var history = {'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};//getHistory(identifier);
