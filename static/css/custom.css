@@ -308,8 +308,18 @@ img#logo {
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
+.container {
+  width: 100%;
+  font-size: 36px;
+}
+
 .lead {
   font-size: 36px;
+}
+
+.site-wrapper-inner {
+  margin: 0px;
+  display: inline;
 }
 
 .masthead, .clearfix, .mastfoot {
@@ -329,12 +339,22 @@ img#logo {
   border-bottom: 2px solid transparent;
 }
 
+.top-banner {
+  margin-top: 50px;
+  color:#018CF3;
+  width:100%;
+}
+
 .cover-container {
   background-color:#018CF3;
   font-size: 36px;
   min-height: 100%;
-  width: 100%;
+  width: 80%;
   float: none;
+}
+
+.mastfoot {
+font-size: 12px;
 }
 
 }
