@@ -91,10 +91,16 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     var firstName = validator.sanitize(request.body.firstName).xss();
     var lastName = validator.sanitize(request.body.lastName).xss();
     var emailAddr = vaidator.sanitize(request.body.emailAddr).xss();
+    validator.check(emailAddr).isEmail();
     var gender = validator.sanitize(request.body.gender).xss();
     var birthday = validator.sanitize(request.body.birthday).xss();
-    var height = validator.sanitize(request.body.height).xss();
-    var weight = validator.sanitize(request.body.weight).xss();
+    var height = validator.sanitize(request.body.height).toInt();
+    var weight = validator.sanitize(request.body.weight).toInt();
+
+    if (!(firstName && lastName && emailAddr && gender && birthday && height && weight)) {
+        res.redirect('/editprofile');
+    }
+    res.redirect('/editprofile');
 });
 
 function motivationalMessage() {
