@@ -92,7 +92,7 @@ app.get('/editprofile', ensureAuthenticated, function(req, res) {
 
 app.post('/editprofile', ensureAuthenticated, function(req, res) {
     function sanitize(data){
-       return req.sanitize(req.param('data'));
+       return data;//req.sanitize(req.param('data'));
     }
     function storeProfile(profileToStore) {
         db.collection('profiles', function(er, collection) {
@@ -112,8 +112,8 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.gender = sanitize(req.body.gender);
     profile.birthday = sanitize(req.body.birthday);
     profile.goal = sanitize(req.body.goal);
-    profile.height = parseInt(req.sanitize('height'));
-    profile.weight = parseInt(req.sanitize('weight'));
+    profile.height = parseInt(sanitize(req.body.height));
+    profile.weight = parseInt(sanitize(req.body.weight));
     profile.account = req.user.id;
 
     if (!(profile.firstName && profile.lastName && profile.emailAddr &&
