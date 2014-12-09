@@ -15,6 +15,6 @@
     "mongodb": "latest",
     "body-parser": "latest",
     "validator": "latest",
-    "nodemailer": "latest"
+   // "nodemailer": "latest"
   }
 }
