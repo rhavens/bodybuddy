@@ -94,13 +94,13 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     function sanitize(data){
        return data;//req.sanitize(req.param('data'));
     }
-    function storeProfile(profileToStore) {
+    function storeProfile(profile) {
         db.collection('profiles', function(er, collection) {
-            collection.insert(profileToStore, function(err) {
+            collection.insert(profile, function(err) {
                 if (err) {
-                    res.redirect('/editprofile');
+                  res.redirect('/editprofile');
                 } else {
-                res.redirect('/profile');
+                  res.redirect('/profile');
                 }
             });
         });
@@ -145,9 +145,8 @@ function motivationalMessage() {
 //  'position':3}
 function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
-        collection.find({'account':identifier}).toArray(function(err, profiles) {
-            return profiles[0];
-        });
+        console.log(collection.findOne({'account':identifier});
+        return collection.findOne({'account':identifier});
     });
 }
 
@@ -156,14 +155,7 @@ function getProfile(identifier) {
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
 function getHistory(identifier) {
     db.collection('history', function(er, collection) {
-        collection.find({'account':identifier}).toArray(function(err, histories) {
-            if (histories[0]) {
-                // the actual history
-                return histories[0].history;
-            }
-            // undefined
-            return histories[0];
-        });
+        return collection.findOne({'account':identifier}).history;
     });
 }
 
@@ -193,7 +185,6 @@ app.get('/home', function(req, res){
 });
 
 app.get('/login', function(req, res){
-	//res.sendFile(__views + '/login.html');
     res.redirect('/auth/facebook');
 });
 
@@ -201,8 +192,7 @@ app.get('/about', function(req, res){
     res.sendFile(__views + '/about.html');
 });
 
-app.get('/auth/facebook',
-  passport.authenticate('facebook'),
+app.get('/auth/facebook', passport.authenticate('facebook'),
   function(req, res){
     // The request will be redirected to Facebook for authentication, so this
     // function will not be called.
