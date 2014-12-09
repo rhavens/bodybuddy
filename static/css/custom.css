@@ -299,3 +299,49 @@ img#logo {
 #selection {
   font-style: italic;
 }
+
+/* --------------------------------------------------------------------
+    Mobile CSS
+
+   -------------------------------------------------------------------- */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+.lead {
+  font-size: 36px;
+}
+
+.masthead, .clearfix, .mastfoot {
+  background-color:transparent;
+  position: relative;
+  display: inline-block;
+  float: left;
+}
+
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 46px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+
+.cover-container {
+  background-color:#018CF3;
+  font-size: 36px;
+  min-height: 100%;
+  width: 100%;
+  float: none;
+}
+
+}
+
+
+
+
+
+
+
