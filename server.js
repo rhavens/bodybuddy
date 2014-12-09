@@ -46,8 +46,8 @@ var __static = path.resolve('static');
 var __views = path.resolve('views');
 
 // configure Express
-//app.set('view engine', 'ejs');
-app.use(logger());
+app.set('view engine', 'jade');
+app.use(logger('combined'));
 app.use(cookieparser());
 app.use(methodOverride());
 app.use(session({ secret: 'keyboard cat' }));
