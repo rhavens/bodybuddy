@@ -98,9 +98,9 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
         db.collection('profiles', function(er, collection) {
             collection.insert(profileToStore, function(err) {
                 if (err) {
-                    req.redirect('/editprofile');
+                    res.redirect('/editprofile');
                 }
-                req.redirect('/profile');
+                res.redirect('/profile');
             });
         });
     }
@@ -113,6 +113,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.birthday = sanitize(req.body.birthday);
     profile.height = parseInt(req.sanitize('height'));
     profile.weight = parseInt(req.sanitize('weight'));
+    profile.account = req.user.id;
 
     if (!(profile.firstName && profile.lastName && profile.emailAddr &&
             profile.gender && profile.birthday && profile.height && profile.weight)) {
