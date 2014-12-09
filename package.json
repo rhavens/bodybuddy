@@ -15,10 +15,10 @@
     "mongodb": "latest",
     "body-parser": "latest",
     "express-validator": "latest",
-    "body-parser": "latest",
     "morgan": "latest",
     "method-override": "latest",
     "express-session": "latest",
-    "passport-facebook": "latest"
+    "passport-facebook": "latest",
+    "express-sanitizer": "~0.1.0"
   }
 }
