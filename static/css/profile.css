@@ -1,6 +1,8 @@
 body {
 	padding-top: 20px;
 	font-family: "Helvetica";
+	width: 80%;
+	padding-left: 5%;
 }
 
 h2#inner {
@@ -17,9 +19,8 @@ h2#inner {
 	font-size: 18px;
 }
 
-#page {
-	width: 80%;
-	padding-left: 5%;
+.upper {
+	min-height: 275px;
 }
 
 .left {
@@ -29,6 +30,7 @@ h2#inner {
 	margin-top: 15px;
 	float: left;
 	z-index: 99;
+
 }
 
 #chart {
@@ -46,6 +48,12 @@ h2#inner {
 	margin-bottom: 10px;
 }
 
+#submit {
+  background-color:#018CF3;
+  color: #FFFFFF;
+  float: center;
+}
+
 img#logo {
 	display: block;
 	max-height: 50px;
@@ -53,4 +61,28 @@ img#logo {
 	margin-bottom: 50px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/* --------------------------------------------------------------------
+    Mobile CSS
+
+   -------------------------------------------------------------------- */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
