@@ -95,14 +95,12 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
        return data;//req.sanitize(req.param('data'));
     }
     function storeProfile(profile) {
-        db.collection('profiles', function(er, collection) {
-            collection.insert(profile, function(err) {
-                if (err) {
-                  res.redirect('/editprofile');
-                } else {
-                  res.redirect('/profile');
-                }
-            });
+        db.profiles.insert(profile, function(err) {
+            if (err) {
+              res.redirect('/editprofile');
+            } else {
+              res.redirect('/profile');
+            }
         });
     }
     var profile = {};
@@ -115,6 +113,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.goal = sanitize(req.body.goal);
     profile.height = parseInt(sanitize(req.body.height));
     profile.weight = parseInt(sanitize(req.body.weight));
+    profile.strength = workouts.getInitStrength();
     profile.position = 0;
     profile.account = req.user.id;
 
@@ -144,19 +143,15 @@ function motivationalMessage() {
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
 function getProfile(identifier) {
-    db.collection('profiles', function(er, collection) {
-        console.log(collection.findOne({'account':identifier}));
-        return collection.findOne({'account':identifier});
-    });
+    console.log(db.profiles.findOne({account:identifier}));
+    return db.profiles.findOne({account:identifier});
 }
 
 // History example:
 // {'account':123456789,
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
 function getHistory(identifier) {
-    db.collection('history', function(er, collection) {
-        return collection.findOne({'account':identifier}).history;
-    });
+    return db.history.findOne({account:identifier}).history;
 }
 
 app.get('/profile', ensureAuthenticated, function(req, res){
