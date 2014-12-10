@@ -174,15 +174,26 @@ function getHistory(identifier) {
 app.get('/profile', ensureAuthenticated, function(req, res){
     var identifier = (req.user.id).toString();
     var index = "<!DOCTYPE HTML><html><head><title>What Did You Feed Me?</title></head><body><h1>What Did You Feed Me?</h1>";
-    var profile = getProfile(identifier);
-    index += profile;
-    //var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
-    // debugging
-    index += identifier;
+    var pizza;
+    db.collection('profiles', function(er, collection) {
+        collection.find({account:identifier}).toArray(function(err, cursor) {
+          if (err) {
+              pizza = "pizza";
+          }
+          else {
+              index += cursor[0];
+              index += identifier;
+              res.send(index);
+          }
+        });
+    });
+    // index += profile;
+    // //var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
+    // // debugging
+    // index += identifier;
  //   console.log(history);
-  //  index += history;
-    index += "</body></html>";
-    res.send(index);
+  // //  index += history;
+  //   res.send(index);
  /*   if (!profile) {
         res.redirect('/editprofile');
     }
