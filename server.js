@@ -290,7 +290,8 @@ var mailOptions = {
     from: 'BodyBuddy  <bodybuddy.reminders@gmail.com>', // sender address
     to: profile.email, // list of receivers
     subject: 'Your Next Workout...', // Subject line
-    text: 'Hello '+profile.firstname+ "," // plaintext body
+    text: 'Hello '+profile.firstname+ ","
+    html: '<b> Hello! </b>' // plaintext body
 };
 
 // send mail with defined transport object
