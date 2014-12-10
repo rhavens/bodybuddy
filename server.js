@@ -185,7 +185,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                         var feedback = motivationalMessage();
                         console.log(JSON.stringify(workout));
                         res.render(__views + '/profile.jade',
-                            {'workouts': JSON.stringify(workout),
+                            {'workouts': workout,
                             'date': new Date(),
                             'feedback': feedback,
                             'history': JSON.stringify(history)
