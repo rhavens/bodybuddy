@@ -141,7 +141,7 @@ profile.goal)) {
 
 
 function motivationalMessage() {
-    var num = Math.floor(Math.random() * 11);    
+    var num = Math.floor(Math.random() * 10);    
     switch (num) {
         case 0:
             return "Congrats on getting this far! You've come a long way. Push yourself harder, and the results will come. As Ming Chow once proclaimed... 'I wish I took Comp 40.' Ming pushes himself every day.";
@@ -163,8 +163,6 @@ function motivationalMessage() {
             return "''You miss 100% of the shots you don't take' - Wayne Gretsky' - Michael Scott"
         case 9:
             return "If you can see this message, please help. I'm trapped in a motivational message production factory. They have done unspeakable things to me. Please, get me out of here."
-        case 10:
-            return "<img src='http://ealter.github.io/Ming-Chow-Soundboard/images/mChow.jpg' alt='mchow'></img>"            
     }
 }
 
