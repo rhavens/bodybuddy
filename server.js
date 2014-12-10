@@ -291,7 +291,7 @@ function sendEmail(profile){
 // setup e-mail data with unicode symbols
 var mailOptions = {
     from: 'BodyBuddy ✔ <postmaster@sandbox5583f6170113453e9b1f56b2f10cb5e6.mailgun.org>', // sender address
-    to: profile.email, // list of receivers
+    to: profile.emailaddr, // list of receivers
     subject: 'Your Next Workout...', // Subject line
     text: 'Hello '+profile.firstname+ "✔,",
     html: '<b> Hello! </b>' // plaintext body
