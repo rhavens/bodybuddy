@@ -141,7 +141,7 @@ profile.goal)) {
 
 
 function motivationalMessage() {
-    var num = Math.floor(Math.random() * 3);    
+    var num = Math.floor(Math.random() * 9);    
     switch (num) {
         case 0:
             return "Congrats on getting this far! You've come a long way. Push yourself harder, and the results will come. As Ming Chow once proclaimed... 'I wish I took Comp 40.' Ming pushes himself every day.";
@@ -149,6 +149,18 @@ function motivationalMessage() {
             return "Don’t quit. You’ve been working hard. Keep your goal in mind, and believe in yourself. It’s amazing how much a positive mindset can affect your life. Ming Chow, a famous Computer Science professor, once proclaimed “I think this assignments 2, 3 and 4 are some of the best assignments I’ve ever come up with.” Channel Ming’s positivity in your life, and in your workout routine.";
         case 2:
             return "Great job! Remember that there is more to fitness than your workout routine. In addition to completing your workouts, try to get enough sleep, eat well, and stay hydrated. The time between workouts is incredibly important.";
+        case 3:
+            return "As Ming Chow has taught us all, always be alert and aware of your surroundings. Beware of stumbling into one of the four chans."
+        case 4:
+            return "I once went to a conference on the Mongo DB. There are many security flaws in the system to take account of."
+        case 5:
+            return "Force is meaningless without skill."
+        case 6:
+            return "This place sucked until I came here."
+        case 7:
+            return "As Ming Chow has said repeatedly, 'I don't know. Let's find out.'"
+        case 8:
+            return "''You miss 100% of the shots you don't take' - Wayne Gretsky' - Michael Scott"
     }
 }
 
