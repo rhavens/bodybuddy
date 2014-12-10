@@ -5,7 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="../static/css/custom.css" type="text/css">
 <script>
 
 $(document).ready(function() {
@@ -83,13 +83,7 @@ $(document).ready(function() {
 					<h4> Gender </h4>
       					<input type="radio" id="gender" name="gender" value="male"> Male
       					<br>
-        				<input type="radio" id="gender" name="gender" value="female"> Female	
-					</div>
-					<div id="innerrightcol">
-      					<div id="innerrightcol">
-              				<input type="submit" value="Submit" class="btn btn-default btn-lg" id="submit">
-							</input> 
-						</div>
+      					<input type="radio" id="gender" name="gender" value="female"> Female
 					</div>
 				</div>
 				<br>
@@ -122,6 +116,8 @@ $(document).ready(function() {
 				</div>
 				<div id='selection'><h3>Please select a goal</h3></div>
 				<input type="hidden" id="sendGoal" name="goal" value="none" class="form-control">
+				<input type="submit" value="Submit" class="btn btn-default btn-lg" id="submit">
+							</input> 
 			</div>
 		</div>
 	</form>
