@@ -116,10 +116,13 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.account = req.user.id;
 
     if (!(profile.firstname && profile.lastname && profile.emailaddr &&
-            profile.gender && profile.birthday && profile.height && profile.weight)) {
+profile.gender && profile.birthday && profile.height && profile.weight)) {
         res.redirect('/editprofile');
     }
-    storeProfile(profile);
+    else {
+        storeProfile(profile);
+        res.redirect('/profile');
+    }
 });
 
 
@@ -165,11 +168,11 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
     res.send(JSON.stringify(profile));
-    return;
-    if (!profile) {
+ 
+ /*   if (!profile) {
         res.redirect('/editprofile');
     }
-    var workout = workouts.getWorkout(profile);/*[{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] */
+    var workout = workouts.getWorkout(profile); // [{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] 
     var feedback = motivationalMessage();
     res.render(__views + '/profile.jade',
         {'workouts': workout,
@@ -177,6 +180,8 @@ app.get('/profile', ensureAuthenticated, function(req, res){
          'feedback': feedback,
          'history': JSON.stringify(history)
     });
+
+  */
 
 });
 
