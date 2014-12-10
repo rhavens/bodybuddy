@@ -9,18 +9,17 @@ html
     .top#date Today is #{date}
     mixin workoutListing(name, intensity, description)
       li #{name}: #{intensity}<br>#{description}
-    #page
-      .upper
-        .left
-          h2#inner Feedback
-          button#submit I completed my workout!    
-          #feedback #{feedback}      
-        #chart  
-      .bottom#workouts
-        h2#inner Your Next Workout
-        ul#exercises
-          for workout in workouts
-            +workoutListing(workout.title, workout.intensity, workout.description)
+    .upper
+      .left
+        h2#inner Feedback
+        button#submit I completed my workout!    
+        #feedback #{feedback}      
+      #chart  
+    .bottom#workouts
+      h2#inner Your Next Workout
+      ul#exercises
+        for workout in workouts
+          +workoutListing(workout.title, workout.intensity, workout.description)
     img(id="logo" src="/img/bblogo.png" alt="Body Buddy Logo")         
     script(type='text/javascript' src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}")
     script.
