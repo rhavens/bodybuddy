@@ -202,18 +202,22 @@ function getWeightLossWorkout (position, strength) {
 }
 
 function getWorkout (profile) {
+    var floored_strength = {};
+    for (var k in profile.strength) {
+        floored_strength[k] = Math.ceil(profile.strength[k]);
+    }
     switch (profile.goal) {
         case 'strength':
-            return getStrengthWorkout(profile.position, profile.strength);
+            return getStrengthWorkout(profile.position, floored_strength);
             break;
         case 'cardio':
-            return getCardioWorkout(profile.position, profile.strength);	
+            return getCardioWorkout(profile.position, floored_strength);	
             break;
         case 'flexibility':
             return getFlexibilityWorkout();
             break;
         case 'weight':
-            return getWeightLossWorkout(profile.position, profile.strength);
+            return getWeightLossWorkout(profile.position, floored_strength);
             break;
     }
 }
