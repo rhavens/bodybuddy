@@ -242,6 +242,24 @@ function getHeuristic (strength) {
     return (total / iter);
 }
 
+function getGoalLength (goal) {
+    switch (goal) {
+        case 'strength':
+            return 2;
+            break;
+        case 'cardio':
+            return 3;
+            break;
+        case 'flexibility':
+            return 1;
+            break;
+        case 'weight':
+            return 3;
+            break;
+    }
+}
+
 exports.getWorkout = getWorkout;
 exports.getInitStrength = getInitStrength;
 exports.getHeuristic = getHeuristic;
+exports.getGoalLength = getGoalLength;

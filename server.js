@@ -239,7 +239,7 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
             for (var key in profile.strength) {
                 profile.strength[key] *= (success == 'yes') ? 1.1 : .9;
             }
-            profile.position++;
+            profile.position = (profile.position + 1) / workouts.getGoalLength();
             collection.remove({'account':profile.account}, function(err, c) {});
             collection.insert(profile, function(err, c) {
                 db.collection('history', function(errr, collection) {
