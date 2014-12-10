@@ -97,7 +97,18 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     function storeProfile(profile) {
         db.collection('profiles', function(err, collection) {
             collection.remove({'account':profile.account}, function(err, c) {});
-            collection.insert(profile, function(err, c) {});
+            collection.insert(profile, function(err, c) {
+                db.collection('history', function(errr, collection) {
+                    var history = {};
+                    history['account'] = profile.account;
+                    var firstPoint = {};
+                    firstPoint['time'] = new Date().getTime();
+                    firstPoint['avg'] = workouts.getHeuristic(profile.strength);
+                    history['history'] = [];
+                    history['history'].push(firstPoint);
+                    collection.insert(history, function(errrr, c) {});
+                });
+            });
         });
     }
     var profile = {};
