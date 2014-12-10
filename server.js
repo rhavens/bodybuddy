@@ -170,7 +170,7 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     // debugging
     index += JSON.stringify(profile);
     index += "</body></html>";
-    response.send(index);
+    res.send(index);
  /*   if (!profile) {
         res.redirect('/editprofile');
     }
