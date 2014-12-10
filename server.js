@@ -144,15 +144,22 @@ function motivationalMessage() {
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
 function getProfile(identifier) {
-    console.log(db.collection("profiles").findOne({account:identifier}));
-    return db.collection("profiles").findOne({account:identifier});
+    db.collection('profiles', function(er, collection) {
+        collection.find({account:identifier}).toArray(function(err, cursor) {
+          return cursor[0];
+        });
+    });
 }
 
 // History example:
 // {'account':123456789,
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
 function getHistory(identifier) {
-    return db.collection("history").findOne({account:identifier}).history;
+    db.collection('history', function(er, collection) {
+        collection.find({account:identifier}).toArray(function(err, cursor) {
+            return cursor[0];
+        });
+    });
 }
 
 app.get('/profile', ensureAuthenticated, function(req, res){
@@ -186,16 +193,6 @@ app.get('/login', function(req, res){
 
 app.get('/about', function(req, res){
     res.sendFile(__views + '/about.html');
-    db.collection('profiles', function(er, collection) {
-      collection.find().toArray(function(err, cursor) {
-        if (!err) {
-          for (var count = 0; count < cursor.length; count++) {
-            console.log("<p>You fed me " + cursor[count].firstname + "!</p>");
-          }
-        }
-      });
-    });
-
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook'),
