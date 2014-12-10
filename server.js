@@ -97,7 +97,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     }
     function storeProfile(profile) {
         db.collection('profiles', function(err, collection) {
-            collection.remove({account:profile.account}, function(err, c) {});
+            collection.remove({'account':profile.account}, function(err, c) {});
             collection.insert(profile, function(err, c) {});
         });
     }
