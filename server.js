@@ -164,11 +164,13 @@ function getHistory(identifier) {
 
 app.get('/profile', ensureAuthenticated, function(req, res){
     var identifier = req.user.id;
+    var index = "<!DOCTYPE HTML><html><head><title>What Did You Feed Me?</title></head><body><h1>What Did You Feed Me?</h1>";
     var profile = getProfile(identifier);
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
-    res.send(JSON.stringify(profile));
- 
+    index += JSON.stringify(profile);
+    index += "</body></html>";
+    response.send(index);
  /*   if (!profile) {
         res.redirect('/editprofile');
     }
