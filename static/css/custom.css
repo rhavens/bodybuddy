@@ -267,7 +267,7 @@ img {
   margin: 35px;
   padding: 20px;
   color: white;
-  background-color: #FFFFFF;
+  background-color:#FFFFFF;
   border-radius: 15px;
   margin-bottom: 10px;
 }
@@ -281,6 +281,12 @@ img#logo {
   margin-right: auto;
 }
 
+#submit {
+  background-color:#018CF3;
+  color: #FFFFFF;
+  float: center;
+}
+
 #innerleftcol {
   width: 50%;
   float: left;
@@ -290,6 +296,8 @@ img#logo {
 
 #innerrightcol {
   margin-left: 52%;
+  font-size: 16px;
+  color: grey;
 }
 
 #val_button {
