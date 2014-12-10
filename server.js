@@ -177,10 +177,10 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
             var profile = profiles[0];
             db.collection('history', function(errr, collection) {
                 collection.find({'account':identifier}).toArray(function(errrr, histories) {
-                    var history = histories[0].history;
                     if (!profile) {
                         res.redirect('/editprofile');
                     } else {
+                        var history = histories[0].history;
                         var workout = workouts.getWorkout(profile);
                         var feedback = motivationalMessage();
                         res.render(__views + '/profile.jade',
