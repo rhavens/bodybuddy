@@ -100,7 +100,6 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
             collection.remove({account:profile.account}, function(err, c) {});
             collection.insert(profile, function(err, c) {});
         });
-    });
     }
     var profile = {};
     profile.firstname = sanitize(req.body.firstname);
