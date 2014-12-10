@@ -143,7 +143,7 @@ function motivationalMessage() {
 // {'account':123456789,
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
-function getProfile(identifier) {
+static function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
         collection.find({account:identifier}).toArray(function(err, cursor) {
           console.log(cursor[0]);
@@ -160,7 +160,7 @@ function getProfile(identifier) {
 // History example:
 // {'account':123456789,
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
-function getHistory(identifier) {
+static function getHistory(identifier) {
     db.collection('history', function(er, collection) {
         collection.find({account: identifier}).toArray(function(err, cursor) {
             return cursor[0];
@@ -175,7 +175,7 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
     index += identifier;
-    index += printjson(profile[0]);
+    index += JSON.stringify(profile);
     index += "</body></html>";
     res.send(index);
  /*   if (!profile) {
