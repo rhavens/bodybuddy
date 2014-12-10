@@ -142,8 +142,8 @@ function motivationalMessage() {
 // {'account':123456789,
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
+/*
 function getProfile(identifier) {
-    console.log(db.profiles.findOne({account:identifier}));
     return db.profiles.findOne({account:identifier});
 }
 
@@ -153,25 +153,48 @@ function getProfile(identifier) {
 function getHistory(identifier) {
     return db.history.findOne({account:identifier}).history;
 }
+*/
 
-app.get('/profile', ensureAuthenticated, function(req, res){
+app.get('/profile', ensureAuthenticated, function(req, res) {
     var identifier = req.user.id;
-    var profile = getProfile(identifier);
+    db.collection('profiles', function(er, collection) {
+        collection.find({'account':identifier}).toArray(function(err, profiles) {
+            var profile = profiles[0];
+            db.collection('history', function(errr, collection) {
+                collection.find({'account':identifier}).toArray(function(errrr, histories) {
+                    var history = histories[0].history;
+                    if (!profile) {
+                        res.redirect('/editprofile');
+                    }
+                    var workout = workouts.getWorkout(profile);
+                    var feedback = motivationalMessage();
+                    res.render(__views + '/profile.jade',
+                        {'workouts': workout,
+                         'date': new Date(),
+                         'feedback': feedback,
+                         'history': JSON.stringify(history)
+                        });
+                   
+                }
+            });
+        });
+    });
+    /*var profile = getProfile(identifier);
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
-    res.send(JSON.stringify(profile));
+    /*res.send(JSON.stringify(profile));
     return;
     if (!profile) {
         res.redirect('/editprofile');
     }
     var workout = workouts.getWorkout(profile);/*[{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] */
-    var feedback = motivationalMessage();
+    /*var feedback = motivationalMessage();
     res.render(__views + '/profile.jade',
         {'workouts': workout,
          'date': new Date(),
          'feedback': feedback,
          'history': JSON.stringify(history)
-    });
+    });*/
 
 });
 
