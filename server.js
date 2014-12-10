@@ -143,7 +143,9 @@ function motivationalMessage() {
 // {'account':123456789,
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
+/*
 function getProfile(identifier) {
+<<<<<<< HEAD
     var pizza;
     db.collection('profiles', function(er, collection) {
         collection.find({account:identifier}).toArray(function(err, cursor) {
@@ -156,6 +158,9 @@ function getProfile(identifier) {
         });
     });
     return pizza;
+=======
+    return db.profiles.findOne({account:identifier});
+>>>>>>> b9c97569e4be5a1d5d6c14daf90bbfac9f4ddac1
 }
 
 // History example:
@@ -170,44 +175,32 @@ function getHistory(identifier) {
     });
     return pizza;
 }
+*/
 
-app.get('/profile', ensureAuthenticated, function(req, res){
-    var identifier = (req.user.id).toString();
-    var index = "<!DOCTYPE HTML><html><head><title>What Did You Feed Me?</title></head><body><h1>What Did You Feed Me?</h1>";
-    var pizza;
+app.get('/profile', ensureAuthenticated, function(req, res) {
+    var identifier = req.user.id;
     db.collection('profiles', function(er, collection) {
-        collection.find({account:identifier}).toArray(function(err, cursor) {
-          if (err) {
-              pizza = "pizza";
-          }
-          else {
-              index += JSON.stringify(cursor[0]);
-              index += identifier;
-              res.send(index);
-          }
+        collection.find({'account':identifier}).toArray(function(err, profiles) {
+            var profile = profiles[0];
+            db.collection('history', function(errr, collection) {
+                collection.find({'account':identifier}).toArray(function(errrr, histories) {
+                    var history = histories[0].history;
+                    if (!profile) {
+                        res.redirect('/editprofile');
+                    }
+                    var workout = workouts.getWorkout(profile);
+                    var feedback = motivationalMessage();
+                    res.render(__views + '/profile.jade',
+                        {'workouts': workout,
+                         'date': new Date(),
+                         'feedback': feedback,
+                         'history': JSON.stringify(history)
+                        });
+                   
+                }
+            });
         });
     });
-    // index += profile;
-    // //var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
-    // // debugging
-    // index += identifier;
- //   console.log(history);
-  // //  index += history;
-  //   res.send(index);
- /*   if (!profile) {
-        res.redirect('/editprofile');
-    }
-    var workout = workouts.getWorkout(profile); // [{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] 
-    var feedback = motivationalMessage();
-    res.render(__views + '/profile.jade',
-        {'workouts': workout,
-         'date': new Date(),
-         'feedback': feedback,
-         'history': JSON.stringify(history)
-    });
-
-  */
-
 });
 
 app.get('/home', function(req, res){
