@@ -276,7 +276,7 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
     });
 });
 function sendEmail(profile){
-    var transporter = nodemailer.createTransport({
+    var transporter = nodemailer.createTransport("SMTP" {
     service: 'Gmail',
     auth: {
         user: 'bodybuddy.reminders@gmail.com',
