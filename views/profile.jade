@@ -10,11 +10,12 @@ html
     mixin workoutListing(name, intensity, description)
       li #{name}: #{intensity}<br>#{description}
     #page
-      .left
-        h2#inner Feedback   
-        #feedback #{feedback}
-        button#submit I completed my workout!         
-      #chart  
+      .top
+        .left
+          h2#inner Feedback   
+          #feedback #{feedback}
+          button#submit I completed my workout!         
+        #chart  
     .bottom#workouts
       h2#inner Your Next Workout
       ul#exercises
