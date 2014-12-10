@@ -175,8 +175,7 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     var identifier = (req.user.id).toString();
     var index = "<!DOCTYPE HTML><html><head><title>What Did You Feed Me?</title></head><body><h1>What Did You Feed Me?</h1>";
     var profile = getProfile(identifier);
-    index += JSON.stringify(profile);
-    console.log(
+    index += profile;
     //var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
     index += identifier;
