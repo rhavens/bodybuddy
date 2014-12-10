@@ -182,9 +182,9 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                         res.redirect('/editprofile');
                     } else {
                         var history = histories[0];
-                        if (histories[0]) {
-                            var timeMin = history[0].time;
-                            history = history.map(function(point) {
+                        if (history.history[0]) {
+                            var timeMin = history.history[0].time;
+                            history.history = history.history.map(function(point) {
                                 return {'time':(point.time - timeMin),'avg':point.avg};
                             });
                         }
