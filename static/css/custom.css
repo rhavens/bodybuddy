@@ -287,6 +287,18 @@ img#logo {
   float: center;
 }
 
+#submit1 {
+  background-color:#018CF3;
+  color: #FFFFFF;
+  float: center;
+}
+
+#submit2 {
+  background-color:#018CF3;
+  color: #FFFFFF;
+  float: center;
+}
+
 #innerleftcol {
   width: 50%;
   float: left;

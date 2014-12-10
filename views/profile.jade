@@ -15,8 +15,8 @@ html
         h2#inner Feedback 
         #feedback #{feedback}
         .buttongroup
-          button(id="submit", onclick="complete()") I completed my workout!
-          button(id="submit", onclick="uncomplete()") I had trouble completing my workout        
+          button(id="submit1", onclick="complete()") I completed my workout!
+          button(id="submit2", onclick="uncomplete()") I had trouble completing my workout        
       #chart  
     .bottom#workouts
       h2#inner Your Next Workout
@@ -33,8 +33,13 @@ html
       }
 
       $(document).ready(function() {
-        $("#submit").click(function(){
-          $("#submit").attr("style", "display: none;");
+        $("#submit1").click(function(){
+          $("#submit1").attr("style", "display: none;");
+          $("#submit2").attr("style", "display: none;");
+        });
+        $("#submit2").click(function(){
+          $("#submit1").attr("style", "display: none;");
+          $("#submit2").attr("style", "display: none;");
         });
       });
 
@@ -66,11 +71,9 @@ html
           var info = JSON.parse(request.responseText);
           var workoutElem = document.getElementById('exercises');
           var workoutHTML = "";
-          //for (var exercise in info.workout) {
           for (var i = 0; i < info.workout.length; ++i) {
             workoutHTML += "<li>" + info.workout[i].name + ": " + info.workout[i].intensity + "<br>" + info.workout[i].description + "</li>";
           }
-          work
           workoutElem.innerHTML = workoutHTML;
         }
       }
