@@ -183,6 +183,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                         var history = histories[0];
                         var workout = workouts.getWorkout(profile);
                         var feedback = motivationalMessage();
+                        console.log(JSON.stringify(workout));
                         res.render(__views + '/profile.jade',
                             {'workouts': JSON.stringify(workout),
                             'date': new Date(),
