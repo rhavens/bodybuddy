@@ -198,6 +198,38 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
     });
 });
 
+app.post('/profile', ensureAuthenticated, function(req, res) {
+    var success = req.body.success;
+    var identifier = req.user.id;
+    if (success != 'yes' && success != 'no) {
+        res.send(400);
+        return;
+    }
+    db.collection('profiles', function(er, collection) {
+        collection.find({'account':identifier}).toArray(function(err, profiles) {
+            var profile = profiles[0];
+            for (var key in profile.strength) {
+                profile.strength[key] *= (success == 'yes') ? 1.1 : .9;
+            }
+            profile.position++;
+            collection.remove({'account':profile.account}, function(err, c) {});
+            collection.insert(profile, function(err, c) {
+                db.collection('history', function(errr, collection) {
+                    collection.find({'account':identifier}).toArray(function(errrr, histories) {
+                        var history = histories[0];
+                        history.history.push({'time':(new Date().getTime()), 'avg':workouts.getHeuristic(profile.strength)});
+                        collection.remove({'account':profile.account}, function(err, c) {});
+                        collection.insert(history, function(errrrr, collection) {
+                            var responseVal = {'history':history.history,'workout':workouts.getWorkout(profile)};
+                            res.send(JSON.stringify(responseVal));
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
+
 app.get('/home', function(req, res){
 	res.sendFile(__views + '/home.html');
 });
