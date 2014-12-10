@@ -252,7 +252,7 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
         collection.find({'account':identifier}).toArray(function(err, profiles) {
             var profile = profiles[0];
             for (var key in profile.strength) {
-                profile.strength[key] = Math.ceil(profile.strength[key](success == 'yes') ? 1.1 : .9);
+                profile.strength[key] *= (success == 'yes') ? 1.1 : .9;
             }
             profile.position = (profile.position + 1) % workouts.getGoalLength(profile.goal);
             collection.remove({'account':profile.account}, function(err, c) {});
