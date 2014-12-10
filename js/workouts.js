@@ -10,7 +10,7 @@ function bench(strength) {
                         "3. After a brief pause, push the bar back to the starting position as you breathe out. Focus on pushing the bar using your chest muscles. Lock your arms and squeeze your chest in the contracted position at the top of the motion, hold for a second and then start coming down slowly again.<br>",
                         "intensity":("Do three sets of five reps at " + strength + " lbs.")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function row(strength) {
@@ -21,7 +21,7 @@ function row(strength) {
                         "3. Bend the elbows and pull the weights up until the elbows are level with the torso in a rowing motion. <br>",
                         "intensity":("Do five sets of ten reps at " + strength + " lbs.")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function squat(strength) {
@@ -33,7 +33,7 @@ function squat(strength) {
                         "4. Lower yourself. In a controlled manner slowly lower yourself down and back so that your upper legs are nearly parallel with the floor.<br>",
                         "intensity":("Do three sets of ten reps at " + strength + " lbs.")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function overhead(strength) {
@@ -43,7 +43,7 @@ function overhead(strength) {
                         "2. Stand tall, feet shoulder-width apart, chest up. Fix your eyes forward, take a deep breath in, and exhale as you drive the barbell over your head<br>",
                         "intensity":("Do three sets of five reps at " + strength + " lbs.")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function deadlift(strength) {
@@ -55,21 +55,21 @@ function deadlift(strength) {
                         "5. Lift the bar. Stand up by raising your hips and shoulders at the same rate and maintaining a flat back. Keep your abs tight during the whole lift. You should lift the bar straight up vertically and close to your body, thinking of it as pushing the floor away. Come to a standing position with upright posture and your shoulders pulled back. Allow the bar to hang in front of your hips; do not try to lift it any higher.<br>",
                         "intensity":("Do five sets of three reps at " + strength + " lbs.")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function getStrengthWorkout (position, strength) {
         var workout = [];
         switch (position) {
             case 0:
-                      workout += squat(strength["Squat"]);//weights
-                      workout += bench(strength["Bench"]);
-                      workout += row(strength["Row"]);
+                      workout.push(squat(strength["Squat"]));//weights
+                      workout.push(bench(strength["Bench"]));
+                      workout.push(row(strength["Row"]));
                       break;
             case 1:
-                      workout += squat(strength["Squat"]);
-                      workout += overhead(strength["Overhead"]);
-                      workout += deadlift(strength["Deadlift"]);
+                      workout.push(squat(strength["Squat"]));
+                      workout.push(overhead(strength["Overhead"]));
+                      workout.push(deadlift(strength["Deadlift"]));
                       break;
         }
         return workout;
@@ -81,7 +81,7 @@ function treadmill(strength) {
                         "description":"Take caution while on the treadmill. Run at your own pace, but push yourself. Keep your heart rate up for an extended period of time, and make sure to break a sweat.",
                         "intensity":("Run for " + strength + " minutes")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function stairs(strength) {
@@ -89,7 +89,7 @@ function stairs(strength) {
                         "description":"Find a flight of stairs high enough so that you can do prolonged sets. Keep a steady pace, and increase your heart rate. You should feel slight muscle pain in your quads. Make sure to hit every step on the way up and down. Take a short, minute long break between sets. Aim for more reps.",
                         "intensity":("Do at least 10 sets of stairs, for no longer than" + strength + " minutes of exercise")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function elliptical(strength) {
@@ -97,18 +97,18 @@ function elliptical(strength) {
                         "description":"Focus on good form when using the ellipticals. Push yourself to keep your heart rate up for an extended period of time.",
                         "intensity":("Do the ellipticals for " + strength + " minutes at your own pace.")
         };
-        return JSON.parse(exercise);
+        return exercise;
 }
 
 function getCardioWorkout (position, strength) {
     var workout = [];
 	switch (position) {
 		case 0:
-			workout += treadmill(strength["Treadmill"]); //amount of time
+			workout.push(treadmill(strength["Treadmill"])); //amount of time
 		case 1:
-			workout += stairs(strength["Stairs"]);
+			workout.push(stairs(strength["Stairs"]));
 		case 2:
-			workout += elliptical(strength["Elliptical"]);
+			workout.push(elliptical(strength["Elliptical"]));
 	}
     return workout;
 }
@@ -158,12 +158,12 @@ function getFlexibilityWorkout () {
              "alt":"Image of downward facing dog"
         };
 
-        workout += chest; 
-        workout += abdominal;
-        workout += shoulder;
-        workout += lower_back;
-        workout += upper_back;
-        workout += yogaMove;
+        workout.push(chest); 
+        workout.push(abdominal);
+        workout.push(shoulder);
+        workout.push(lower_back);
+        workout.push(upper_back);
+        workout.push(yogaMove);
         
         return workout;
 }
@@ -191,12 +191,12 @@ function getWeightLossWorkout (position, strength) {
                 var boxJumps = {"title":"Box Jumps",
                                 "description":"<br>1. Stand in front of the box with feet directly under the hips and hands by your side.<br>2. Lower yourself into the jumping position by bending at the knees and hips. Keep your head up and back straight.<br>3. Explosively jump from the crouched position whilst swinging the arms.<br>4. Land softly on the centre of the platform absorbing the impact with your legs. <br>5. Stand tall. <br>6. Return to starting position by either jumping backwards off the box, or by stepping down and repeat the movement.<br>",
                                 "intensity":"Do three sets with 10 repetitions per set."};
-                workout += JSON.parse(burpees);
-                workout += JSON.parse(mountainClimbers);
-                workout += JSON.parse(jumpingJacks);
-                workout += JSON.parse(lunges);
-                workout += JSON.parse(pushups);
-                workout += JSON.parse(boxJumps);
+                workout.push(burpees);
+                workout.push(mountainClimbers);
+                workout.push(jumpingJacks);
+                workout.push(lunges);
+                workout.push(pushups);
+                workout.push(boxJumps);
                 return workout;
         }
 }

@@ -23,7 +23,7 @@ html
     img(id="logo" src="/img/bblogo.png" alt="Body Buddy Logo")         
     script(type='text/javascript' src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}")
     script.
-      var workoutsss = JSON.stringify(!{workouts});
+      var workoutsss = !{workouts};
       var historyLit = !{history};
       var historyArr = [];
       for (i = 0; i < historyLit.history.length; ++i) {
