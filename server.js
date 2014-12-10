@@ -180,7 +180,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                     if (!profile) {
                         res.redirect('/editprofile');
                     } else {
-                        var history = histories[0].history;
+                        var history = histories[0];
                         var workout = workouts.getWorkout(profile);
                         var feedback = motivationalMessage();
                         res.render(__views + '/profile.jade',
