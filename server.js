@@ -143,11 +143,11 @@ function motivationalMessage() {
     var num = Math.floor(Math.random() * 3);    
     switch (num) {
         case 0:
-            return "Do not fear the unknown.";
+            return "Congrats on getting this far! You've come a long way. Push yourself harder, and the results will come. As Ming Chow once proclaimed... 'I wish I took Comp 40.' Ming pushes himself every day.";
         case 1:
-            return "I will show you the path.";
+            return "Don’t quit. You’ve been working hard. Keep your goal in mind, and believe in yourself. It’s amazing how much a positive mindset can affect your life. Ming Chow, a famous Computer Science professor, once proclaimed “I think this assignments 2, 3 and 4 are some of the best assignments I’ve ever come up with.” Channel Ming’s positivity in your life, and in your workout routine.";
         case 2:
-            return "Your skills are inferior!";
+            return "Great job! Remember that there is more to fitness than your workout routine. In addition to completing your workouts, try to get enough sleep, eat well, and stay hydrated. The time between workouts is incredibly important.";
     }
 }
 
