@@ -96,13 +96,11 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
        return data;//req.sanitize(req.param('data'));
     }
     function storeProfile(profile) {
-        db.profiles.insert(profile, function(err) {
-            if (err) {
-              res.redirect('/editprofile');
-            } else {
-              res.redirect('/profile');
-            }
+        db.collection('profiles', function(err, collection) {
+            collection.remove({account:profile.account}, function(err, c) {});
+            collection.insert(profile, function(err, c) {});
         });
+    });
     }
     var profile = {};
     profile.firstname = sanitize(req.body.firstname);
