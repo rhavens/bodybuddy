@@ -145,7 +145,7 @@ function motivationalMessage() {
 //  'position':3}
 function getProfile(identifier) {
     db.collection('profiles', function(er, collection) {
-        collection.find({'account':identifier}).toArray(function(err, cursor) {
+        collection.find({account: identifier}).toArray(function(err, cursor) {
           return cursor[0];
         });
     });
@@ -156,7 +156,7 @@ function getProfile(identifier) {
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
 function getHistory(identifier) {
     db.collection('history', function(er, collection) {
-        collection.find({'account':identifier}).toArray(function(err, cursor) {
+        collection.find({account: identifier}).toArray(function(err, cursor) {
             return cursor[0];
         });
     });
