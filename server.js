@@ -12,6 +12,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var logger = require('morgan');
 var session = require('express-session');
 var methodOverride = require('method-override');
+var nodemailer = require('nodemailer');
 
 
 var mongoUri = process.env.MONGOLAB_URI ||
@@ -250,6 +251,9 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
                         collection.insert(history, function(errrrr, collection) {
                             var responseVal = {'history':history.history,'workout':workouts.getWorkout(profile)};
                             res.send(JSON.stringify(responseVal));
+                            // create reusable transporter object using SMTP transport
+                            sendEmail(profile);
+
                         });
                     });
                 });
@@ -257,6 +261,35 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
         });
     });
 });
+function sendEmail(profile){
+    var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'bodybuddy.reminders@gmail.com',
+        pass: 'mingchow'
+    }
+});
+
+// NB! No need to recreate the transporter object. You can use
+// the same transporter object for all e-mails
+
+// setup e-mail data with unicode symbols
+var mailOptions = {
+    from: 'BodyBuddy  <bodybuddy.reminders@gmail.com>', // sender address
+    to: profile.email, // list of receivers
+    subject: 'Your Next Workout...', // Subject line
+    text: 'Hello '+profile.firstname+ "," // plaintext body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('Message sent: ' + info.response);
+    }
+});
+}
 
 app.get('/home', function(req, res){
 	res.sendFile(__views + '/home.html');
