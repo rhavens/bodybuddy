@@ -232,5 +232,16 @@ function getInitStrength (profile) {
     return strength;
 }
 
+function getHeuristic (strength) {
+    var total = 0;
+    var iter = 0;
+    for (var key in strength) {
+        total += strength[key];
+        iter++;
+    }
+    return (total / iter);
+}
+
 exports.getWorkout = getWorkout;
 exports.getInitStrength = getInitStrength;
+exports.getHeuristic = getHeuristic;
