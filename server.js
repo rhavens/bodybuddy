@@ -110,12 +110,13 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.goal = sanitize(req.body.goal);
     profile.height = parseInt(sanitize(req.body.height));
     profile.weight = parseInt(sanitize(req.body.weight));
-    profile.strength = workouts.getInitStrength();
+    profile.strength = workouts.getInitStrength(profile);
     profile.position = 0;
     profile.account = req.user.id;
 
     if (!(profile.firstname && profile.lastname && profile.emailaddr &&
-profile.gender && profile.birthday && profile.height && profile.weight)) {
+profile.gender && profile.birthday && profile.height && profile.weight && 
+profile.goal)) {
         res.redirect('/editprofile');
     }
     else {
@@ -162,7 +163,7 @@ function getHistory(identifier) {
 }
 
 app.get('/profile', ensureAuthenticated, function(req, res){
-    var identifier = req.user.id;
+    var identifier = (req.user.id).toString();
     var index = "<!DOCTYPE HTML><html><head><title>What Did You Feed Me?</title></head><body><h1>What Did You Feed Me?</h1>";
     var profile = getProfile(identifier);
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
