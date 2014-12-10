@@ -218,4 +218,19 @@ function getWorkout (profile) {
     }
 }
 
+function getInitStrength (profile) {
+    // change this to depend on age, gender, etc
+    var strength = {};
+    strength['Treadmill'] = 10;
+    strength['Stairs'] = 5;
+    strength['Elliptical'] = 10;
+    strength['Squat'] = 45;
+    strength['Bench'] = 45;
+    strength['Row'] = 60;
+    strength['Overhead'] = 45;
+    strength['Deadlift'] = 45;
+    return strength;
+}
+
 exports.getWorkout = getWorkout;
+exports.getInitStrength = getInitStrength;

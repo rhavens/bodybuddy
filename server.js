@@ -13,6 +13,17 @@ var logger = require('morgan')
 var session = require('express-session')
 var methodOverride = require('method-override');
 
+
+var mongoUri = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/bodybuddy';
+var mongo = require('mongodb');
+var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
+    db = databaseConnection;
+});
+
+var workouts = require("./js/workouts.js");
+
 var FACEBOOK_APP_ID = '392824514208595'
 var FACEBOOK_APP_SECRET = "a208eb3e5b07e78376fa25df0842b7cb";
 
@@ -66,23 +77,12 @@ app.use('/img', express.static(__static + '/img'));
 app.use('/css', express.static(__static + '/css'));
 app.use('/js', express.static(__static + '/js'));
 
-
-var mongoUri = process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
-    'mongodb://localhost/bodybuddy';
-var mongo = require('mongodb');
-var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
-    db = databaseConnection;
-});
-
-var workouts = require("./js/workouts.js");
-
 app.get('/', function(req, res) {
-    res.sendFile(__views + '/index.html'); 
+    res.sendFile(__views + '/index.html');
 });
 
 app.get('/signup', ensureAuthenticated, function(req, res) {
-	res.sendFile(__views + '/signup.html');
+	res.redirect('/editprofile');
 });
 
 app.get('/editprofile', ensureAuthenticated, function(req, res) {
@@ -95,34 +95,34 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
        return data;//req.sanitize(req.param('data'));
     }
     function storeProfile(profile) {
-        db.collection('profiles', function(er, collection) {
-            collection.insert(profile, function(err) {
-                if (err) {
-                  res.redirect('/editprofile');
-                } else {
-                  res.redirect('/profile');
-                }
-            });
+        db.collection('profiles', function(err, collection) {
+            collection.remove({'account':profile.account}, function(err, c) {});
+            collection.insert(profile, function(err, c) {});
         });
     }
     var profile = {};
     profile.firstname = sanitize(req.body.firstname);
     profile.lastname = sanitize(req.body.lastname);
     req.assert('emailaddr', 'Invalid email address').isEmail();
-    profile.email = sanitize(req.body.email);
+    profile.emailaddr = sanitize(req.body.email);
     profile.gender = sanitize(req.body.gender);
     profile.birthday = sanitize(req.body.birthday);
     profile.goal = sanitize(req.body.goal);
     profile.height = parseInt(sanitize(req.body.height));
     profile.weight = parseInt(sanitize(req.body.weight));
+    profile.strength = workouts.getInitStrength(profile);
     profile.position = 0;
     profile.account = req.user.id;
 
-    if (!(profile.firstName && profile.lastName && profile.emailAddr &&
-            profile.gender && profile.birthday && profile.height && profile.weight)) {
+    if (!(profile.firstname && profile.lastname && profile.emailaddr &&
+profile.gender && profile.birthday && profile.height && profile.weight && 
+profile.goal)) {
         res.redirect('/editprofile');
     }
-    storeProfile(profile);
+    else {
+        storeProfile(profile);
+        res.redirect('/profile');
+    }
 });
 
 
@@ -143,41 +143,45 @@ function motivationalMessage() {
 // {'account':123456789,
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
-function getProfile(identifier) {
-    db.collection('profiles', function(er, collection) {
-        console.log(collection.findOne({'account':identifier}));
-        return collection.findOne({'account':identifier});
-    });
-}
+/*
 
 // History example:
 // {'account':123456789,
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
 function getHistory(identifier) {
-    db.collection('history', function(er, collection) {
-        return collection.findOne({'account':identifier}).history;
+    var pizza;
+    return db.collection('history', function(er, collection) {
+        collection.find({account: identifier}).toArray(function(err, cursor) {
+            pizza = cursor[0];
+        });
     });
+    return pizza;
 }
+*/
 
-app.get('/profile', ensureAuthenticated, function(req, res){
+app.get('/profile', ensureAuthenticated, function(req, res) {
     var identifier = req.user.id;
-    var profile = getProfile(identifier);
-    var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
-    // debugging
-    res.send(JSON.stringify(profile));
-    return;
-    if (!profile) {
-        res.redirect('/editprofile');
-    }
-    var workout = workouts.getWorkout(profile);/*[{'title':'testtitle1','intensity':'testintensity1','description':'testdescription1'},{'title':'testtitle2','intensity':'testintensity2','description':'testdescription2'}] */
-    var feedback = motivationalMessage();
-    res.render(__views + '/profile.jade',
-        {'workouts': workout,
-         'date': new Date(),
-         'feedback': feedback,
-         'history': JSON.stringify(history)
+    db.collection('profiles', function(er, collection) {
+        collection.find({'account':identifier}).toArray(function(err, profiles) {
+            var profile = profiles[0];
+            db.collection('history', function(errr, collection) {
+                collection.find({'account':identifier}).toArray(function(errrr, histories) {
+                    //var history = histories[0].history;
+                    if (!profile) {
+                        res.redirect('/editprofile');
+                    }
+                    var workout = workouts.getWorkout(profile);
+                    var feedback = motivationalMessage();
+                    res.render(__views + '/profile.jade',
+                        {'workouts': workout,
+                         'date': new Date(),
+                         'feedback': feedback//,
+                         //'history': JSON.stringify(history)
+                    });
+                });
+            });
+        });
     });
-
 });
 
 app.get('/home', function(req, res){
