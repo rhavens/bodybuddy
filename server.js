@@ -178,8 +178,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                          'feedback': feedback,
                          'history': JSON.stringify(history)
                     });
-                   
-                }
+                });
             });
         });
     });
