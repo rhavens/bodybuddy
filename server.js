@@ -13,6 +13,17 @@ var logger = require('morgan')
 var session = require('express-session')
 var methodOverride = require('method-override');
 
+
+var mongoUri = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/bodybuddy';
+var mongo = require('mongodb');
+var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
+    db = databaseConnection;
+});
+
+var workouts = require("./js/workouts.js");
+
 var FACEBOOK_APP_ID = '392824514208595'
 var FACEBOOK_APP_SECRET = "a208eb3e5b07e78376fa25df0842b7cb";
 
@@ -65,17 +76,6 @@ app.use(expressSanitizer());
 app.use('/img', express.static(__static + '/img'));
 app.use('/css', express.static(__static + '/css'));
 app.use('/js', express.static(__static + '/js'));
-
-
-var mongoUri = process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
-    'mongodb://localhost/bodybuddy';
-var mongo = require('mongodb');
-var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
-    db = databaseConnection;
-});
-
-var workouts = require("./js/workouts.js");
 
 app.get('/', function(req, res) {
     res.sendFile(__views + '/index.html'); 
@@ -143,15 +143,15 @@ function motivationalMessage() {
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
 function getProfile(identifier) {
-    console.log(db.profiles.findOne({account:identifier}));
-    return db.profiles.findOne({account:identifier});
+    console.log(db.collection("profiles").findOne({account:identifier}));
+    return db.collection("profiles").findOne({account:identifier});
 }
 
 // History example:
 // {'account':123456789,
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
 function getHistory(identifier) {
-    return db.history.findOne({account:identifier}).history;
+    return db.collection("history").findOne({account:identifier}).history;
 }
 
 app.get('/profile', ensureAuthenticated, function(req, res){
