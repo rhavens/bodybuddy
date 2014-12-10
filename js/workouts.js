@@ -30,8 +30,7 @@ function squat(strength) {
                         "Plant your feet flat on the ground, about shoulder-width apart."+
                         "Point your feet slightly outward, not straight ahead. Grasp the bar and rest on the arch of your shoulders."+
                         "Pull in your abs, and keep your lower back in a near neutral position (a slightly arched back might be unavoidable)."+
-                        "Lower yourself. In a controlled manner slowly lower yourself down and back so that your upper legs are nearly parallel with the floor.
-                        ",
+                        "Lower yourself. In a controlled manner slowly lower yourself down and back so that your upper legs are nearly parallel with the floor.",
                         "intensity":("Do three sets of ten reps at " + strength + " lbs.")
         };
         return exercise;
