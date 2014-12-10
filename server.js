@@ -276,13 +276,14 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
     });
 });
 function sendEmail(profile){
-    var transporter = nodemailer.createTransport( {
+    var transporter = nodemailer.createTransport("SMTP" {
     service: 'Mailgun',
     auth: {
         user: 'postmaster@sandbox5583f6170113453e9b1f56b2f10cb5e6.mailgun.org',
         pass: 'c156f0c3ace63adbc4ab2fce320d20c9'
     }
-});
+    });
+    console.log(profile.email);
 
 // NB! No need to recreate the transporter object. You can use
 // the same transporter object for all e-mails
