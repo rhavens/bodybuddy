@@ -155,7 +155,6 @@ function getProfile(identifier) {
           }
         });
     });
-    while (!pizza);
     return pizza;
 }
 
@@ -169,7 +168,6 @@ function getHistory(identifier) {
             pizza = cursor[0];
         });
     });
-    while (!pizza);
     return pizza;
 }
 
