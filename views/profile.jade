@@ -20,7 +20,7 @@ html
         h2#inner Your Next Workout
         ul#exercises
           for workout in workouts
-            +workoutListing(workout.title, workout.intensity, workout.description)
+                +workoutListing(workout.title, workout.intensity, workout.description)
     img(id="logo" src="/img/bblogo.png" alt="Body Buddy Logo")         
     script(type='text/javascript' src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}")
     script.
