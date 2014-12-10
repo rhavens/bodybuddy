@@ -11,9 +11,11 @@ html
       li #{name}: #{intensity}<br>#{description}
     .upper
       .left
-        h2#inner Feedback
-        button#submit I completed my workout!    
-        #feedback #{feedback}      
+        h2#inner Feedback 
+        #feedback #{feedback}
+        .buttongroup
+          button(id="submit", onclick="complete()") I completed my workout!
+          button(id="submit", onclick="uncomplete()") I had trouble completing my workout        
       #chart  
     .bottom#workouts
       h2#inner Your Next Workout
@@ -28,6 +30,39 @@ html
       for (i = 0; i < historyLit.history.length; ++i) {
         historyArr[i] = [historyLit.history[i].time, historyLit.history[i].avg];
       }
+
+      function complete() {
+      var request = new XMLHttpRequest();
+
+      request.open("POST","http://bodybuddy.herokuapp.com/profile",true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.onreadystatechange = function () {
+            update(request);
+        }
+        request.send("success=yes");
+      }
+
+      function uncomplete() {
+
+      var request = new XMLHttpRequest();
+
+      request.open("POST","http://bodybuddy.herokuapp.com/profile",true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.onreadystatechange = function () {
+            update(request);
+        }
+        request.send("success=no");
+      }
+
+      function update (request) {
+        if (request.readyState == 4) {
+          var info = JSON.parse(request.responseText);
+          for (var exercise in info.workout) {
+            document.getElementById('exercises').innerHTML = "<li>" + exercise.name + ": " + exercise.intensity + "<br>" + exercise.description + "</li>";
+          }
+        }
+      }
+
       function renderChart() {
         var dataTable = new google.visualization.DataTable();
         dataTable.addColumn('number', 'Time');
