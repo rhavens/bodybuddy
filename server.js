@@ -83,7 +83,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/signup', ensureAuthenticated, function(req, res) {
-	res.sendFile(__views + '/signup.html');
+	res.redirect('/editprofile');
 });
 
 app.get('/editprofile', ensureAuthenticated, function(req, res) {
