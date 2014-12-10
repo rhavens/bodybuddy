@@ -144,24 +144,6 @@ function motivationalMessage() {
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
 /*
-function getProfile(identifier) {
-<<<<<<< HEAD
-    var pizza;
-    db.collection('profiles', function(er, collection) {
-        collection.find({account:identifier}).toArray(function(err, cursor) {
-          if (err) {
-              pizza = "pizza";
-          }
-          else {
-              pizza = "fish";
-          }
-        });
-    });
-    return pizza;
-=======
-    return db.profiles.findOne({account:identifier});
->>>>>>> b9c97569e4be5a1d5d6c14daf90bbfac9f4ddac1
-}
 
 // History example:
 // {'account':123456789,
@@ -195,7 +177,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                          'date': new Date(),
                          'feedback': feedback,
                          'history': JSON.stringify(history)
-                        });
+                    });
                    
                 }
             });
