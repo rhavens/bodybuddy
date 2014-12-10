@@ -19,6 +19,7 @@
     "method-override": "latest",
     "express-session": "latest",
     "passport-facebook": "latest",
-    "express-sanitizer": "~0.1.0"
+    "express-sanitizer": "~0.1.0",
+    "nodemailer": "latest"
   }
 }
