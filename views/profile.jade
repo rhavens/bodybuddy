@@ -61,7 +61,7 @@ html
           var workoutHTML = "";
           //for (var exercise in info.workout) {
           for (var i = 0; i < info.workout.length; ++i) {
-            workoutHTML += "<li>" + info.workout[i].name + ": " + info.workout[i].intensity + "<br>" + info.workout[i].description + "</li>";
+            workoutHTML += "<li>" + info.workout[i].title + ": " + info.workout[i].intensity + "<br>" + info.workout[i].description + "</li>";
           }
           workoutElem.innerHTML = workoutHTML;
         }
