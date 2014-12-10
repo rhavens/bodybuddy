@@ -79,7 +79,7 @@ app.use('/js', express.static(__static + '/js'));
 
 app.get('/', function(req, res) {
     res.sendFile(__views + '/index.html'); 
-    console.log(db.collection("profiles").findOne());
+    console.log(db.collection("profiles").find());
 });
 
 app.get('/signup', ensureAuthenticated, function(req, res) {
