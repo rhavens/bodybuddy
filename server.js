@@ -289,10 +289,10 @@ function sendEmail(profile){
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: 'BodyBuddy  <bodybuddy.reminders@gmail.com>', // sender address
+    from: 'BodyBuddy ✔ <bodybuddy.reminders@gmail.com>', // sender address
     to: profile.email, // list of receivers
     subject: 'Your Next Workout...', // Subject line
-    text: 'Hello '+profile.firstname+ ",",
+    text: 'Hello '+profile.firstname+ "✔,",
     html: '<b> Hello! </b>' // plaintext body
 };
 
