@@ -58,6 +58,7 @@ var __static = path.resolve('static');
 var __views = path.resolve('views');
 
 // configure Express
+app.locals.pretty = true;
 app.set('view engine', 'jade');
 app.use(logger('combined'));
 app.use(cookieParser());
