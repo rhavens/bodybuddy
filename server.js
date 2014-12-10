@@ -180,15 +180,16 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                     //var history = histories[0].history;
                     if (!profile) {
                         res.redirect('/editprofile');
+                    } else {
+                        var workout = workouts.getWorkout(profile);
+                        var feedback = motivationalMessage();
+                        res.render(__views + '/profile.jade',
+                            {'workouts': workout,
+                            'date': new Date(),
+                            'feedback': feedback//,
+                            'history': JSON.stringify(history)
+                        });
                     }
-                    var workout = workouts.getWorkout(profile);
-                    var feedback = motivationalMessage();
-                    res.render(__views + '/profile.jade',
-                        {'workouts': workout,
-                         'date': new Date(),
-                         'feedback': feedback//,
-                         //'history': JSON.stringify(history)
-                    });
                 });
             });
         });
