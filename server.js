@@ -277,10 +277,10 @@ app.post('/profile', ensureAuthenticated, function(req, res) {
 });
 function sendEmail(profile){
     var transporter = nodemailer.createTransport("SMTP", {
-    service: 'Gmail',
+    service: 'Mailgun',
     auth: {
-        user: 'bodybuddy.reminders@gmail.com',
-        pass: 'mingchow'
+        user: 'postmaster@sandbox5583f6170113453e9b1f56b2f10cb5e6.mailgun.org',
+        pass: 'c156f0c3ace63adbc4ab2fce320d20c9'
     }
 });
 
@@ -289,7 +289,7 @@ function sendEmail(profile){
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: 'BodyBuddy ✔ <bodybuddy.reminders@gmail.com>', // sender address
+    from: 'BodyBuddy ✔ <postmaster@sandbox5583f6170113453e9b1f56b2f10cb5e6.mailgun.org>', // sender address
     to: profile.email, // list of receivers
     subject: 'Your Next Workout...', // Subject line
     text: 'Hello '+profile.firstname+ "✔,",
