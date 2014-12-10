@@ -168,7 +168,7 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     var profile = getProfile(identifier);
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
-    index += JSON.stringify(profile);
+    index += profile.weight;
     index += "</body></html>";
     res.send(index);
  /*   if (!profile) {
