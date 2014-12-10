@@ -6,11 +6,11 @@ var bodyparser = require('body-parser');
 var validator = require('express-validator');
 var expressSanitizer = require('express-sanitizer');
 var app = express();
-var passport = require('passport')
-var util = require('util')
-var FacebookStrategy = require('passport-facebook').Strategy
-var logger = require('morgan')
-var session = require('express-session')
+var passport = require('passport');
+var util = require('util');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var logger = require('morgan');
+var session = require('express-session');
 var methodOverride = require('method-override');
 
 
@@ -209,7 +209,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                         console.log(JSON.stringify(workout));
                         res.render(__views + '/profile.jade',
                             {'workouts': workout,
-                            'date': (weekday[now.getDay()] + ' ' + month[now.getMonth()] + ' ' now.getDate() + ' ' + now.getFullYear()),
+                            'date': (weekday[now.getDay()] + ' ' + month[now.getMonth()] + ' ' + now.getDate() + ' ' + now.getFullYear()),
                             'feedback': feedback,
                             'history': JSON.stringify(history)
                         });
