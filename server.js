@@ -201,7 +201,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
 app.post('/profile', ensureAuthenticated, function(req, res) {
     var success = req.body.success;
     var identifier = req.user.id;
-    if (success != 'yes' && success != 'no) {
+    if (success != 'yes' && success != 'no') {
         res.send(400);
         return;
     }
