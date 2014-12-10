@@ -108,7 +108,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.firstname = sanitize(req.body.firstname);
     profile.lastname = sanitize(req.body.lastname);
     req.assert('emailaddr', 'Invalid email address').isEmail();
-    profile.email = sanitize(req.body.email);
+    profile.emailaddr = sanitize(req.body.email);
     profile.gender = sanitize(req.body.gender);
     profile.birthday = sanitize(req.body.birthday);
     profile.goal = sanitize(req.body.goal);
@@ -118,7 +118,7 @@ app.post('/editprofile', ensureAuthenticated, function(req, res) {
     profile.position = 0;
     profile.account = req.user.id;
 
-    if (!(profile.firstName && profile.lastName && profile.emailAddr &&
+    if (!(profile.firstname && profile.lastname && profile.emailaddr &&
             profile.gender && profile.birthday && profile.height && profile.weight)) {
         res.redirect('/editprofile');
     }
@@ -186,6 +186,16 @@ app.get('/login', function(req, res){
 
 app.get('/about', function(req, res){
     res.sendFile(__views + '/about.html');
+    db.collection('profiles', function(er, collection) {
+      collection.find().toArray(function(err, cursor) {
+        if (!err) {
+          for (var count = 0; count < cursor.length; count++) {
+            console.log("<p>You fed me " + cursor[count].firstname + "!</p>");
+          }
+        }
+      });
+    });
+
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook'),
