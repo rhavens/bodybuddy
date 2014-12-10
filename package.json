@@ -20,6 +20,6 @@
     "express-session": "latest",
     "passport-facebook": "latest",
     "express-sanitizer": "~0.1.0",
-    "nodemailer": "latest"
+    "nodemailer": ".0.7.1"
   }
 }
