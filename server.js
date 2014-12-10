@@ -186,7 +186,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                         res.render(__views + '/profile.jade',
                             {'workouts': workout,
                             'date': new Date(),
-                            'feedback': feedback//,
+                            'feedback': feedback,
                             'history': JSON.stringify(history)
                         });
                     }
