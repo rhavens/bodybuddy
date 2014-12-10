@@ -151,7 +151,7 @@ function getProfile(identifier) {
               pizza = "pizza";
           }
           else {
-              return "fish";
+              pizza = "fish";
           }
         });
     });
