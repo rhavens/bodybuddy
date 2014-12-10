@@ -143,10 +143,9 @@ function motivationalMessage() {
 // {'account':123456789,
 //  'strength':{'Squat':150,'Bench':150,'Row:150...},
 //  'position':3}
-static function getProfile(identifier) {
-    db.collection('profiles', function(er, collection) {
+function getProfile(identifier) {
+    return db.collection('profiles', function(er, collection) {
         collection.find({account:identifier}).toArray(function(err, cursor) {
-          console.log(cursor[0]);
           if (err) {
               return "pizza";
           }
@@ -160,8 +159,8 @@ static function getProfile(identifier) {
 // History example:
 // {'account':123456789,
 //  'history':[{'time':10000000,'avg':150},{'time':10005000,'avg':160}]}
-static function getHistory(identifier) {
-    db.collection('history', function(er, collection) {
+function getHistory(identifier) {
+    return db.collection('history', function(er, collection) {
         collection.find({account: identifier}).toArray(function(err, cursor) {
             return cursor[0];
         });
@@ -172,10 +171,11 @@ app.get('/profile', ensureAuthenticated, function(req, res){
     var identifier = (req.user.id).toString();
     var index = "<!DOCTYPE HTML><html><head><title>What Did You Feed Me?</title></head><body><h1>What Did You Feed Me?</h1>";
     var profile = getProfile(identifier);
+    index += JSON.stringify(profile);
     var history = getHistory(identifier);/*{'account':1,'history':[{'time':0,'avg':150},{'time':1,'avg':200}]};*/
     // debugging
     index += identifier;
-    index += JSON.stringify(profile);
+    index += JSON.stringify(history);
     index += "</body></html>";
     res.send(index);
  /*   if (!profile) {
