@@ -181,7 +181,7 @@ app.get('/profile', ensureAuthenticated, function(req, res){
               pizza = "pizza";
           }
           else {
-              index += cursor[0];
+              index += JSON.stringify(cursor[0]);
               index += identifier;
               res.send(index);
           }
