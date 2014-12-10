@@ -209,7 +209,7 @@ app.get('/profile', ensureAuthenticated, function(req, res) {
                         console.log(JSON.stringify(workout));
                         res.render(__views + '/profile.jade',
                             {'workouts': workout,
-                            'date': (weekday[now.getDay()] + ' ' + month[now.getMonth()] + ' ' + now.getDate() + ' ' + now.getFullYear()),
+                            'date': (weekday[now.getDay()] + ', ' + month[now.getMonth()] + ' ' + now.getDate() + ' ' + now.getFullYear()),
                             'feedback': feedback,
                             'history': JSON.stringify(history)
                         });
